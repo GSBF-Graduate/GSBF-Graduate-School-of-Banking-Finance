@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GSBF — Graduate School of Banking & Finance</title>
+
+<style>
+:root {
+  --navy: #0b1f3a;
+  --royal: #123c73;
+  --gold: #f5c242;
+  --gold-dark: #d4a017;
+  --green: #1db954;
+  --white: #ffffff;
+  --soft: #cfd8e3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, var(--navy), var(--royal));
+  color: var(--white);
+  line-height: 1.6;
+}
+
+header {
+  padding: 20px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: var(--gold);
+}
+
+nav a {
+  color: var(--soft);
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+.hero {
+  padding: 100px 8%;
+  max-width: 950px;
+}
+
+.hero h1 {
+  font-size: 44px;
+  margin-bottom: 20px;
+  color: var(--gold);
+}
+
+.hero p {
+  font-size: 18px;
+  color: var(--soft);
+  margin-bottom: 25px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  background: linear-gradient(45deg, var(--gold), var(--gold-dark));
+  color: #000;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+.section {
+  padding: 80px 8%;
+  background: rgba(0,0,0,0.15);
+}
+
+.section h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: var(--gold);
+}
+
+.section p {
+  color: var(--soft);
+  margin-bottom: 20px;
+  max-width: 900px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  color: var(--gold);
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--soft);
+}
+
+.price-tag {
+  margin-top: 15px;
+  font-weight: 700;
+  color: var(--green);
+}
+
+footer {
+  padding: 40px 8%;
+  background: var(--navy);
+  color: var(--soft);
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 30px;
+  }
+}
+
+.pathway {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 6px 12px;
+  font-size: 12px;
+  background: rgba(245,194,66,0.15);
+  color: var(--gold);
+  border: 1px solid var(--gold-dark);
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+.track-btn {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--green);
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.track-btn:hover {
+  color: var(--gold);
+  transform: translateX(4px);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">GSBF — Graduate School of Banking & Finance</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#tracks">Tracks</a>
+    <a href="#community">Community</a>
+    <a href="#apply">Apply</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>GSBF trains young graduates and professionals to work inside the systems of Investment Banking, Private Equity, Venture Capital, and Wealth Management.</h1>
+
+  <p>
+    Most graduates learn theory. Very few understand how elite finance institutions actually operate.
+  </p>
+
+  <p>
+    GSBF bridges that gap — turning ambition into real financial capability.
+  </p>
+
+  <a href="#tracks" class="btn">Explore Learning Tracks</a>
+</section>
+
+<section id="about" class="section">
+  <h2>What GSBF Is</h2>
+
+  <p>
+    GSBF is an independent learning platform focused on modern finance careers and systems.
+    We teach how investment institutions think, evaluate risk, allocate capital,
+    and build scalable financial businesses.
+  </p>
+
+  <p>
+    This is not motivational finance content.
+    This is structured professional training.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Investment Banking Career Track</h3>
+      <p>
+        Learn valuation, deal structure, financial modeling,
+        and institutional decision-making used in investment banks.
+      </p>
+
+      <span class="pathway">Track: Investment Banking</span><br>
+      <a href="#tracks" class="track-btn">View Track →</a>
+    </div>
+
+    <div class="card">
+      <h3>Private Equity & Venture Capital Track</h3>
+      <p>
+        Understand how investors identify opportunities,
+        scale companies, and manage portfolio risk.
+      </p>
+
+      <span class="pathway">Track: PE & VC</span><br>
+      <a href="#tracks" class="track-btn">View Track →</a>
+    </div>
+
+    <div class="card">
+      <h3>Wealth Management Track</h3>
+      <p>
+        Learn capital preservation, asset allocation,
+        and long-term wealth strategy frameworks.
+      </p>
+
+      <span class="pathway">Track: Wealth Systems</span><br>
+      <a href="#tracks" class="track-btn">View Track →</a>
+    </div>
+
+    <div class="card">
+      <h3>Finance Entrepreneurship Track</h3>
+      <p>
+        Build ventures around financial systems —
+        advisory, investment platforms, and financial services.
+      </p>
+
+      <span class="pathway">Track: Finance Builder</span><br>
+      <a href="#tracks" class="track-btn">View Track →</a>
+    </div>
+
+  </div>
+</section>
+
+<section id="tracks" class="section">
+  <h2>Learning Tracks</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Banking Foundations Program</h3>
+      <p>
+        Core training for graduates entering finance careers.
+      </p>
+      <p>• Financial modeling & valuation</p>
+      <p>• Institutional capital flows</p>
+      <p>• Professional finance frameworks</p>
+      <div class="price-tag">Pilot Cohort Enrollment Open</div>
+      <a href="#apply" class="btn">Apply Now</a>
+    </div>
+
+    <div class="card">
+      <h3>PE & VC Analyst Program</h3>
+      <p>
+        Training for aspiring investors and analysts.
+      </p>
+      <p>• Deal evaluation frameworks</p>
+      <p>• Portfolio strategy thinking</p>
+      <p>• Risk & opportunity analysis</p>
+      <div class="price-tag">Limited Cohort Access</div>
+      <a href="#apply" class="btn">Apply Now</a>
+    </div>
+
+    <div class="card">
+      <h3>Wealth Strategy Program</h3>
+      <p>
+        Systems for managing and growing capital.
+      </p>
+      <p>• Asset allocation strategy</p>
+      <p>• Risk management systems</p>
+      <p>• Long-term capital growth</p>
+      <div class="price-tag">Enrollment Opening Soon</div>
+      <a href="#apply" class="btn">Join Waitlist</a>
+    </div>
+
+    <div class="card">
+      <h3>Finance Venture Builder</h3>
+      <p>
+        For founders building financial businesses.
+      </p>
+      <p>• Business architecture design</p>
+      <p>• Revenue model strategy</p>
+      <p>• Sustainable scaling frameworks</p>
+      <div class="price-tag">Founder Cohort Selection</div>
+      <a href="#apply" class="btn">Apply as Founder</a>
+    </div>
+
+  </div>
+</section>
+
+<section id="community" class="section">
+  <h2>GSBF Community</h2>
+  <p>
+    GSBF is building a network of ambitious young professionals
+    committed to mastering modern finance and building impactful careers.
+  </p>
+</section>
+
+<section id="apply" class="section">
+  <h2>Apply to GSBF</h2>
+  <p>
+    Admission prioritizes commitment, discipline,
+    and long-term professional growth.
+  </p>
+  <a href="#" class="btn">Start Application</a>
+</section>
+
+<footer>
+  © 2026 GSBF — Graduate School of Banking & Finance
+</footer>
+
+</body>
+</html>
