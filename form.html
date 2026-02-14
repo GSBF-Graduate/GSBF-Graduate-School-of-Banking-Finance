@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GSBF Application Form</title>
+<style>
+:root {--gold:#f5c242;--green:#1db954;--soft:#cfd8e3;}
+body{background:linear-gradient(135deg,#0b1f3a,#123c73);color:#fff;font-family:system-ui,sans-serif;padding:40px;}
+.section{background:rgba(0,0,0,0.15);padding:40px;border-radius:10px;max-width:700px;margin:auto;}
+h2{color:var(--gold);margin-bottom:20px;}
+input,select{padding:8px;width:100%;margin-top:5px;border-radius:5px;border:1px solid #ccc;}
+.btn{display:inline-block;padding:12px 25px;background:var(--gold);color:#000;font-weight:600;border-radius:6px;text-decoration:none;margin-top:15px;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<section class="section">
+<h2>GSBF Application Form</h2>
+<form id="appForm">
+<label>Full Name:<br><input type="text" name="name" required></label><br><br>
+<label>Email:<br><input type="email" name="email" required></label><br><br>
+<label>Preferred Track:<br>
+<select name="track" required>
+<option value="">Select</option>
+<option value="CFFA">Finance Foundations (CFFA)</option>
+<option value="CIP">Investment Professional (CIP)</option>
+<option value="CAIP">Advanced Practitioner (CAIP)</option>
+</select>
+</label><br><br>
+<label>Finance Knowledge (0–5):<br><input type="number" name="financeScore" min="0" max="5" required></label><br><br>
+<label>Analytical Skills (0–5):<br><input type="number" name="analysisScore" min="0" max="5" required></label><br><br>
+<label>Career Motivation (0–5):<br><input type="number" name="motivationScore" min="0" max="5" required></label><br><br>
+<button type="submit" class="btn">Submit Application</button>
+</form>
+
+<div id="appResult" style="margin-top:20px;color:var(--gold);font-weight:600;"></div>
+<p style="margin-top:20px;"><a href="dashboard.html" class="btn">View Dashboard</a> <a href="certificate.html" class="btn">View Certificate</a></p>
+</section>
+
+<script>
+// Store applications in localStorage to share across pages
+const form = document.getElementById('appForm');
+const resultDiv = document.getElementById('appResult');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const data = new FormData(form);
+  const name = data.get('name');
+  const track = data.get('track');
+  const finance = parseInt(data.get('financeScore'));
+  const analysis = parseInt(data.get('analysisScore'));
+  const motivation = parseInt(data.get('motivationScore'));
+  const total = finance + analysis + motivation;
+  const maxScore = 15;
+  const percentage = ((total/maxScore)*100).toFixed(1);
+
+  let status = "❌ Below Threshold";
+  if(percentage>=70) status = "✅ Strong Candidate";
+  else if(percentage>=50) status = "⚠️ Consider for Review";
+
+  // Save applicant data in localStorage
+  let applicants = JSON.parse(localStorage.getItem('gsbfApplicants') || '[]');
+  applicants.push({name, track, finance, analysis, motivation, total, percentage, status});
+  localStorage.setItem('gsbfApplicants', JSON.stringify(applicants));
+
+  // Show result
+  resultDiv.textContent = `Application Score: ${total}/${maxScore} (${percentage}%) - ${status}`;
+
+  // Reset form
+  form.reset();
+});
+</script>
+
+</body>
+</html>
