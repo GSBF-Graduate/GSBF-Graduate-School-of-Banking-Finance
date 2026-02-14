@@ -24,6 +24,7 @@ h2{color:var(--gold);}
 <h3 id="certName">[Applicant Name]</h3>
 <p>has successfully completed the</p>
 <h3 id="certTrack">[Program Track]</h3>
+<p>Career Pathway: <span id="certCareer">[Career Pathway]</span></p>
 <p>with outstanding performance and professional distinction.</p>
 
 <div style="margin-top:40px;display:flex;justify-content:space-between;padding:0 50px;">
@@ -44,7 +45,8 @@ let applicants = JSON.parse(localStorage.getItem('gsbfApplicants') || '[]');
 if(applicants.length>0){
   let latest = applicants[applicants.length-1];
   document.getElementById('certName').textContent = latest.name;
-  document.getElementById('certTrack').textContent = latest.track;
+  document.getElementById('certTrack').textContent = latest.track || "N/A";
+  document.getElementById('certCareer').textContent = latest.careerPath;
 }
 </script>
 
