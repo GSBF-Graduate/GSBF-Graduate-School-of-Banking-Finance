@@ -17,29 +17,29 @@ h3{color:var(--gold);}
 
 <section class="section">
 <h2>Student Dashboard Preview</h2>
-
-<div class="card">
-<h3>CFFA — Finance Foundations</h3>
-<p>Modules Completed: 3/5</p>
-<p>Score: 78%</p>
-<p>Status: <strong style="color: var(--green)">On Track</strong></p>
-</div>
-
-<div class="card">
-<h3>CIP — Investment Professional</h3>
-<p>Modules Completed: 2/5</p>
-<p>Score: 65%</p>
-<p>Status: <strong style="color: #f5c242">In Progress</strong></p>
-</div>
-
-<div class="card">
-<h3>CAIP — Advanced Investment Practitioner</h3>
-<p>Modules Completed: 0/5</p>
-<p>Score: 0%</p>
-<p>Status: <strong style="color:#ccc">Not Started</strong></p>
-</div>
-
+<div id="dashboardGrid"></div>
+<p style="margin-top:20px;"><a href="app.html" class="btn">Add New Applicant</a></p>
 </section>
+
+<script>
+const dashboard = document.getElementById('dashboardGrid');
+let applicants = JSON.parse(localStorage.getItem('gsbfApplicants') || '[]');
+
+if(applicants.length===0){
+  dashboard.innerHTML="<p>No applications yet.</p>";
+}else{
+  dashboard.innerHTML = applicants.map(a=>`
+    <div class="card">
+      <h3>${a.track} — ${a.name}</h3>
+      <p>Finance Score: ${a.finance}/5</p>
+      <p>Analysis Score: ${a.analysis}/5</p>
+      <p>Motivation Score: ${a.motivation}/5</p>
+      <p>Total Score: ${a.total}/15 (${a.percentage}%)</p>
+      <p>Status: <strong style="color: var(--green)">${a.status}</strong></p>
+    </div>
+  `).join('');
+}
+</script>
 
 </body>
 </html>
