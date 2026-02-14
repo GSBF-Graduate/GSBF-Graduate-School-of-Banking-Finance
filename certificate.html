@@ -5,40 +5,90 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GSBF Certificate</title>
 <style>
-:root{--gold:#f5c242;}
-body{background:#123c73;font-family:system-ui,sans-serif;padding:40px;color:#000;}
-.section{max-width:800px;margin:auto;}
-.card{background:#fff;padding:40px;border:5px solid var(--gold);border-radius:15px;text-align:center;position:relative;}
-.card .watermark{opacity:0.1;font-size:100px;position:absolute;top:30px;left:50%;transform:translateX(-50%);}
-h2{color:var(--gold);}
+:root {
+  --gold: #f5c242;
+  --white: #ffffff;
+  --navy: #0b1f3a;
+  --soft: #cfd8e3;
+}
+body {
+  background: linear-gradient(135deg, #123c73, #0b1f3a);
+  font-family: 'Georgia', serif;
+  padding: 40px;
+  color: #000;
+  display: flex;
+  justify-content: center;
+}
+.certificate {
+  position: relative;
+  max-width: 850px;
+  background: var(--white);
+  border: 8px solid var(--gold);
+  border-radius: 15px;
+  padding: 60px 50px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+.certificate .watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 120px;
+  color: var(--gold);
+  opacity: 0.08;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  font-weight: bold;
+  pointer-events: none;
+}
+.certificate h1 {
+  font-size: 36px;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.certificate h2 {
+  font-size: 28px;
+  margin: 20px 0;
+}
+.certificate p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+.signatures {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+  padding: 0 40px;
+}
+.signature-line {
+  border-top: 1px solid #000;
+  width: 180px;
+  margin-top: 5px;
+}
 </style>
 </head>
 <body>
 
-<section class="section">
-<h2>Certificate Mockup</h2>
-<div class="card" id="certificateCard">
-<div class="watermark">GSBF</div>
-<h2>Certificate of Achievement</h2>
-<p>This certifies that</p>
-<h3 id="certName">[Applicant Name]</h3>
-<p>has successfully completed the</p>
-<h3 id="certTrack">[Program Track]</h3>
-<p>Career Pathway: <span id="certCareer">[Career Pathway]</span></p>
-<p>with outstanding performance and professional distinction.</p>
+<div class="certificate">
+  <div class="watermark">GSBF</div>
+  <h1>Certificate of Achievement</h1>
+  <p>This certifies that</p>
+  <h2 id="certName">[Applicant Name]</h2>
+  <p>has successfully completed the</p>
+  <h2 id="certTrack">[Program Track]</h2>
+  <p>Career Pathway: <span id="certCareer">[Career Pathway]</span></p>
+  <p>with outstanding performance and professional distinction.</p>
 
-<div style="margin-top:40px;display:flex;justify-content:space-between;padding:0 50px;">
-<div>
-<p>Program Director</p>
-<div style="border-top:1px solid #000;width:120px;margin-top:5px;"></div>
+  <div class="signatures">
+    <div>
+      <p>Program Director</p>
+      <div class="signature-line"></div>
+    </div>
+    <div>
+      <p>Date</p>
+      <div class="signature-line"></div>
+    </div>
+  </div>
 </div>
-<div>
-<p>Date</p>
-<div style="border-top:1px solid #000;width:100px;margin-top:5px;"></div>
-</div>
-</div>
-</div>
-</section>
 
 <script>
 let applicants = JSON.parse(localStorage.getItem('gsbfApplicants') || '[]');
