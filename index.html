@@ -113,21 +113,16 @@ body{
 }
 
 /* =========================
-   HERO (SPLIT BANNER STYLE)
+   HERO (Banner Style)
 ========================= */
 
 .hero{
   position:relative;
-  padding:140px 8%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:60px;
+  padding:150px 8%;
   overflow:hidden;
   background: var(--logo-navy);
 }
 
-/* subtle grid texture */
 .hero::after{
   content:"";
   position:absolute;
@@ -136,13 +131,13 @@ body{
     linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size:80px 80px;
-  opacity:0.12;
+  opacity:0.15;
   pointer-events:none;
 }
 
-/* LEFT SIDE */
 .hero-content{
-  flex:1;
+  position:relative;
+  max-width:950px;
   z-index:2;
 }
 
@@ -163,33 +158,6 @@ body{
   font-size:20px;
   color:var(--soft);
   margin-bottom:35px;
-}
-
-/* RIGHT SIDE CHART */
-.hero-chart{
-  flex:1;
-  position:relative;
-  z-index:2;
-}
-
-/* Animated rising line */
-.chart-line{
-  width:100%;
-  max-width:520px;
-}
-
-.chart-line path{
-  stroke:var(--gold-highlight);
-  stroke-width:4;
-  fill:none;
-  stroke-dasharray:1200;
-  stroke-dashoffset:1200;
-  animation:drawLine 3s ease forwards;
-  filter:drop-shadow(0 0 12px rgba(255,213,74,0.6));
-}
-
-@keyframes drawLine{
-  to{ stroke-dashoffset:0; }
 }
 
 /* =========================
@@ -218,7 +186,7 @@ body{
 }
 
 /* =========================
-   SECTIONS (UNCHANGED)
+   SECTIONS
 ========================= */
 
 .section{
@@ -251,7 +219,7 @@ body{
 }
 
 /* =========================
-   CARDS (UNCHANGED)
+   CARDS
 ========================= */
 
 .card{
@@ -323,11 +291,7 @@ footer{
    RESPONSIVE
 ========================= */
 
-@media(max-width:900px){
-  .hero{
-    flex-direction:column;
-    text-align:center;
-  }
+@media(max-width:768px){
   .hero h1{ font-size:32px; }
 }
 
@@ -363,20 +327,8 @@ footer{
     </p>
     <a href="#solutions" class="btn">Explore Programs</a>
   </div>
-
-  <div class="hero-chart">
-    <svg class="chart-line" viewBox="0 0 520 300">
-      <path d="M20 250 
-               L120 220 
-               L200 190 
-               L280 160 
-               L360 120 
-               L440 90 
-               L500 60" />
-    </svg>
-  </div>
 </section>
-  
+
 <section id="about" class="section">
 <h2>What GSBF Is</h2>
 <p>
