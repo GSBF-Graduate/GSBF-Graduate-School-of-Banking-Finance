@@ -25,9 +25,9 @@ input,select{padding:8px;width:100%;margin-top:5px;border-radius:5px;border:1px 
 <label>Program Track:<br>
 <select name="track" required>
   <option value="">Select Program Track</option>
-  <option value="CFFA">CFFA — Certified Finance Foundations Associate</option>
-  <option value="CIP">CIP — Certified Investment Professional</option>
-  <option value="CAIP">CAIP — Certified Advanced Investment Practitioner</option>
+  <option value="CFFA">CFFA</option>
+  <option value="CIP">CIP</option>
+  <option value="CAIP">CAIP</option>
 </select>
 </label><br><br>
 
@@ -35,9 +35,9 @@ input,select{padding:8px;width:100%;margin-top:5px;border-radius:5px;border:1px 
 <label>Career Pathways:<br>
 <select name="careerPath" required>
   <option value="">Select Career Pathway</option>
-  <option value="IB">Investment Banking (IB)</option>
-  <option value="PEVC">Private Equity / Venture Capital (PE/VC)</option>
-  <option value="WM">Wealth Management (WM)</option>
+  <option value="Investment Banking (IB)">Investment Banking (IB)</option>
+  <option value="Private Equity / Venture Capital (PE/VC)">Private Equity / Venture Capital (PE/VC)</option>
+  <option value="Wealth Management (WM)">Wealth Management (WM)</option>
 </select>
 </label><br><br>
 
@@ -56,7 +56,13 @@ input,select{padding:8px;width:100%;margin-top:5px;border-radius:5px;border:1px 
 </section>
 
 <script>
-// Store applicants in localStorage
+// Map short code to full program name
+const programMap = {
+  "CFFA": "CFFA — Certified Finance Foundations Associate",
+  "CIP": "CIP — Certified Investment Professional",
+  "CAIP": "CAIP — Certified Advanced Investment Practitioner"
+};
+
 const form = document.getElementById('appForm');
 const resultDiv = document.getElementById('appResult');
 
@@ -65,7 +71,8 @@ form.addEventListener('submit', e => {
   const data = new FormData(form);
   const name = data.get('name');
   const email = data.get('email');
-  const track = data.get('track');
+  const trackCode = data.get('track');
+  const trackFull = programMap[trackCode] || trackCode;
   const careerPath = data.get('careerPath');
   const finance = parseInt(data.get('financeScore'));
   const analysis = parseInt(data.get('analysisScore'));
@@ -79,7 +86,18 @@ form.addEventListener('submit', e => {
   else if(percentage>=50) status = "⚠️ Consider for Review";
 
   let applicants = JSON.parse(localStorage.getItem('gsbfApplicants') || '[]');
-  applicants.push({name,email,track,careerPath,finance,analysis,motivation,total,percentage,status});
+  applicants.push({
+    name,
+    email,
+    track: trackFull,
+    careerPath,
+    finance,
+    analysis,
+    motivation,
+    total,
+    percentage,
+    status
+  });
   localStorage.setItem('gsbfApplicants', JSON.stringify(applicants));
 
   resultDiv.textContent = `Application Score: ${total}/${maxScore} (${percentage}%) - ${status}`;
