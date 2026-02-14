@@ -21,6 +21,16 @@ input,select{padding:8px;width:100%;margin-top:5px;border-radius:5px;border:1px 
 <label>Full Name:<br><input type="text" name="name" required></label><br><br>
 <label>Email:<br><input type="email" name="email" required></label><br><br>
 
+<!-- Program Track -->
+<label>Program Track:<br>
+<select name="track" required>
+  <option value="">Select Program Track</option>
+  <option value="CFFA">CFFA — Certified Finance Foundations Associate</option>
+  <option value="CIP">CIP — Certified Investment Professional</option>
+  <option value="CAIP">CAIP — Certified Advanced Investment Practitioner</option>
+</select>
+</label><br><br>
+
 <!-- Career Pathways -->
 <label>Career Pathways:<br>
 <select name="careerPath" required>
@@ -55,6 +65,7 @@ form.addEventListener('submit', e => {
   const data = new FormData(form);
   const name = data.get('name');
   const email = data.get('email');
+  const track = data.get('track');
   const careerPath = data.get('careerPath');
   const finance = parseInt(data.get('financeScore'));
   const analysis = parseInt(data.get('analysisScore'));
@@ -68,7 +79,7 @@ form.addEventListener('submit', e => {
   else if(percentage>=50) status = "⚠️ Consider for Review";
 
   let applicants = JSON.parse(localStorage.getItem('gsbfApplicants') || '[]');
-  applicants.push({name,email,careerPath,finance,analysis,motivation,total,percentage,status});
+  applicants.push({name,email,track,careerPath,finance,analysis,motivation,total,percentage,status});
   localStorage.setItem('gsbfApplicants', JSON.stringify(applicants));
 
   resultDiv.textContent = `Application Score: ${total}/${maxScore} (${percentage}%) - ${status}`;
