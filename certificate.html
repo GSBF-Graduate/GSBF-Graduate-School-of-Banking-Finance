@@ -5,44 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GSBF Certificate</title>
 <style>
-:root {
-  --gold: #f5c242;
-  --white: #ffffff;
-}
-body {
-  background: linear-gradient(135deg, #123c73, #0b1f3a);
-  font-family: 'Georgia', serif;
-  padding: 40px;
-  color: #000;
-  display: flex;
-  justify-content: center;
-}
-.certificate {
-  position: relative;
-  max-width: 850px;
-  background: var(--white);
-  border: 8px solid var(--gold);
-  border-radius: 15px;
-  padding: 60px 50px;
-  text-align: center;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-}
-.certificate .watermark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 120px;
-  color: var(--gold);
-  opacity: 0.08;
-  transform: translate(-50%, -50%) rotate(-15deg);
-  font-weight: bold;
-  pointer-events: none;
-}
-.certificate h1 { font-size: 36px; color: var(--gold); margin-bottom: 10px; }
-.certificate h2 { font-size: 28px; margin: 20px 0; }
-.certificate p { font-size: 18px; margin: 10px 0; }
-.signatures { display: flex; justify-content: space-between; margin-top: 60px; padding: 0 40px; }
-.signature-line { border-top: 1px solid #000; width: 180px; margin-top: 5px; }
+:root {--gold:#f5c242;--white:#ffffff;}
+body {background: linear-gradient(135deg, #123c73, #0b1f3a); font-family: 'Georgia', serif; padding:40px; color:#000; display:flex; justify-content:center;}
+.certificate {position: relative; max-width: 850px; background: var(--white); border:8px solid var(--gold); border-radius:15px; padding:60px 50px; text-align:center; box-shadow:0 15px 30px rgba(0,0,0,0.3);}
+.certificate .watermark {position:absolute;top:50%;left:50%;font-size:120px;color:var(--gold);opacity:0.08;transform:translate(-50%, -50%) rotate(-15deg);font-weight:bold;pointer-events:none;}
+.certificate h1 {font-size:36px;color:var(--gold);margin-bottom:10px;}
+.certificate h2 {font-size:28px;margin:20px 0;}
+.certificate p {font-size:18px;margin:10px 0;}
+.signatures {display:flex;justify-content:space-between;margin-top:60px;padding:0 40px;}
+.signature-line {border-top:1px solid #000;width:180px;margin-top:5px;}
 </style>
 </head>
 <body>
@@ -74,7 +45,7 @@ let applicants = JSON.parse(localStorage.getItem('gsbfApplicants') || '[]');
 if(applicants.length>0){
   let latest = applicants[applicants.length-1];
   document.getElementById('certName').textContent = latest.name;
-  document.getElementById('certTrack').textContent = latest.track || "N/A";
+  document.getElementById('certTrack').textContent = latest.track;
   document.getElementById('certCareer').textContent = latest.careerPath;
 }
 </script>
