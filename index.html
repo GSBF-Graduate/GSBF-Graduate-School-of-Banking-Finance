@@ -7,18 +7,21 @@
 
 <style>
 
-/* ===== BRAND COLORS (From Logo) ===== */
+/* =========================
+   EXACT GSBF BRAND COLORS
+========================= */
 
 :root {
-  --navy:#081a36;
-  --royal:#0e2f5a;
-  --royal-light:#184a8c;
-  --gold:#f4c430;
-  --gold-rich:#ffcc33;
-  --gold-deep:#c99700;
-  --soft:#d9e3f0;
+  --logo-navy:#0A2E63;
+  --logo-deep:#071F45;
+  --logo-glow:#0E3B80;
+
+  --gold-primary:#F2C230;
+  --gold-highlight:#FFD54A;
+  --gold-deep:#B8860B;
+
+  --soft:#dbe6f7;
   --white:#ffffff;
-  --glass:rgba(255,255,255,0.06);
 }
 
 *{
@@ -29,12 +32,14 @@
 }
 
 body{
-  background:linear-gradient(135deg,#07152b 0%, #0e2f5a 50%, #184a8c 100%);
-  color:var(--white);
+  background: var(--logo-navy);
+  color: var(--white);
   line-height:1.6;
 }
 
-/* ===== TOP BAR ===== */
+/* =========================
+   TOP BAR
+========================= */
 
 .topbar{
   height:70px;
@@ -44,8 +49,8 @@ body{
   padding:0 20px;
   position:sticky;
   top:0;
-  background:linear-gradient(90deg,var(--navy),var(--royal));
-  box-shadow:0 4px 12px rgba(0,0,0,0.4);
+  background: var(--logo-deep);
+  box-shadow:0 4px 12px rgba(0,0,0,0.6);
   z-index:1000;
 }
 
@@ -56,10 +61,12 @@ body{
 .menu-btn{
   font-size:28px;
   cursor:pointer;
-  color:var(--gold-rich);
+  color:var(--gold-highlight);
 }
 
-/* ===== SIDEBAR ===== */
+/* =========================
+   SIDEBAR
+========================= */
 
 .sidebar{
   position:fixed;
@@ -67,7 +74,7 @@ body{
   left:-260px;
   width:260px;
   height:100%;
-  background:linear-gradient(180deg,var(--navy),var(--royal));
+  background: var(--logo-deep);
   padding-top:80px;
   transition:0.3s;
   z-index:1100;
@@ -82,8 +89,8 @@ body{
 }
 
 .sidebar a:hover{
-  background:rgba(255,255,255,0.05);
-  color:var(--gold-rich);
+  background:rgba(255,255,255,0.06);
+  color:var(--gold-highlight);
 }
 
 .overlay{
@@ -105,33 +112,100 @@ body{
   pointer-events:all;
 }
 
-/* ===== HERO ===== */
+/* =========================
+   HERO (SPLIT BANNER STYLE)
+========================= */
 
 .hero{
-  padding:120px 8%;
-  max-width:950px;
+  position:relative;
+  padding:140px 8%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:60px;
+  overflow:hidden;
+  background: var(--logo-navy);
+}
+
+/* subtle grid texture */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size:80px 80px;
+  opacity:0.12;
+  pointer-events:none;
+}
+
+/* LEFT SIDE */
+.hero-content{
+  flex:1;
+  z-index:2;
 }
 
 .hero h1{
-  font-size:44px;
+  font-size:48px;
   margin-bottom:20px;
-  color:var(--gold-rich);
-  text-shadow:0 2px 8px rgba(244,196,48,0.3);
+  background:linear-gradient(
+      45deg,
+      var(--gold-highlight),
+      var(--gold-primary),
+      var(--gold-deep)
+  );
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
 .hero p{
-  font-size:18px;
+  font-size:20px;
   color:var(--soft);
-  margin-bottom:30px;
+  margin-bottom:35px;
 }
 
-/* ===== BUTTON ===== */
+/* RIGHT SIDE CHART */
+.hero-chart{
+  flex:1;
+  position:relative;
+  z-index:2;
+}
+
+/* Animated rising line */
+.chart-line{
+  width:100%;
+  max-width:520px;
+}
+
+.chart-line path{
+  stroke:var(--gold-highlight);
+  stroke-width:4;
+  fill:none;
+  stroke-dasharray:1200;
+  stroke-dashoffset:1200;
+  animation:drawLine 3s ease forwards;
+  filter:drop-shadow(0 0 12px rgba(255,213,74,0.6));
+}
+
+@keyframes drawLine{
+  to{ stroke-dashoffset:0; }
+}
+
+/* =========================
+   BUTTON
+========================= */
 
 .btn{
   display:inline-block;
-  padding:14px 28px;
-  background:linear-gradient(45deg,var(--gold-rich),var(--gold-deep));
-  color:var(--navy);
+  padding:15px 30px;
+  background:linear-gradient(
+      45deg,
+      var(--gold-highlight),
+      var(--gold-primary),
+      var(--gold-deep)
+  );
+  color:var(--logo-deep);
   font-weight:700;
   border-radius:8px;
   text-decoration:none;
@@ -140,21 +214,27 @@ body{
 
 .btn:hover{
   transform:translateY(-3px);
-  box-shadow:0 8px 22px rgba(244,196,48,0.4);
+  box-shadow:0 10px 25px rgba(242,194,48,0.4);
 }
 
-/* ===== SECTIONS ===== */
+/* =========================
+   SECTIONS (UNCHANGED)
+========================= */
 
 .section{
-  padding:90px 8%;
-  background:rgba(0,0,0,0.15);
+  padding:100px 8%;
 }
 
 .section h2{
-  font-size:30px;
-  margin-bottom:25px;
-  color:var(--gold-rich);
-  text-shadow:0 2px 6px rgba(244,196,48,0.25);
+  font-size:32px;
+  margin-bottom:30px;
+  background:linear-gradient(
+      45deg,
+      var(--gold-highlight),
+      var(--gold-primary)
+  );
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
 .section p{
@@ -170,26 +250,27 @@ body{
   margin-top:30px;
 }
 
-/* ===== CARD ===== */
+/* =========================
+   CARDS (UNCHANGED)
+========================= */
 
 .card{
-  background:linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  background: var(--logo-glow);
   padding:30px;
   border-radius:14px;
   border:1px solid rgba(255,255,255,0.08);
-  backdrop-filter:blur(8px);
   transition:0.3s;
 }
 
 .card:hover{
-  border-color:var(--gold-rich);
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  border-color:var(--gold-primary);
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
   transform:translateY(-4px);
 }
 
 .card h3{
   margin-bottom:15px;
-  color:var(--gold-rich);
+  color:var(--gold-primary);
 }
 
 .card p{
@@ -197,12 +278,10 @@ body{
   color:var(--soft);
 }
 
-/* ===== PROGRAM INFO ===== */
-
 .price-tag{
   margin-top:15px;
   font-weight:700;
-  color:var(--gold-rich);
+  color:var(--gold-highlight);
 }
 
 .pathway{
@@ -210,8 +289,8 @@ body{
   margin-top:15px;
   padding:6px 14px;
   font-size:12px;
-  background:rgba(255,204,51,0.15);
-  color:var(--gold-rich);
+  background:rgba(255,213,74,0.15);
+  color:var(--gold-highlight);
   border:1px solid var(--gold-deep);
   border-radius:20px;
 }
@@ -220,7 +299,7 @@ body{
   display:inline-block;
   margin-top:12px;
   font-size:13px;
-  color:var(--gold-rich);
+  color:var(--gold-highlight);
   font-weight:600;
   text-decoration:none;
 }
@@ -229,19 +308,27 @@ body{
   color:var(--white);
 }
 
-/* ===== FOOTER ===== */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
   padding:40px 8%;
-  background:linear-gradient(90deg,var(--navy),var(--royal));
+  background: var(--logo-deep);
   color:var(--soft);
   text-align:center;
 }
 
-/* ===== RESPONSIVE ===== */
+/* =========================
+   RESPONSIVE
+========================= */
 
-@media(max-width:768px){
-  .hero h1{ font-size:30px; }
+@media(max-width:900px){
+  .hero{
+    flex-direction:column;
+    text-align:center;
+  }
+  .hero h1{ font-size:32px; }
 }
 
 </style>
@@ -249,16 +336,12 @@ footer{
 
 <body>
 
-<!-- ===== TOP BAR ===== -->
-
 <div class="topbar">
   <div class="logo">
     <img src="https://raw.githubusercontent.com/GSBF-Graduate/GSBF-Graduate-School-of-Banking-Finance/main/gsbf-logo.png" alt="GSBF Logo">
   </div>
   <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </div>
-
-<!-- ===== SIDEBAR ===== -->
 
 <div class="sidebar" id="sidebar">
   <a href="#">Home</a>
@@ -271,26 +354,31 @@ footer{
 
 <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
-<!-- ===== HERO ===== -->
-
 <section class="hero">
-<h1>
-GSBF — Graduate School of Banking & Finance helps young professionals enter Investment Banking, Private Equity/Venture Capital, and Wealth Management systems.
-</h1>
+  <div class="hero-content">
+    <h1>Graduate School of Banking & Finance</h1>
+    <p>
+      Learn. Invest. Succeed.  
+      Enter Investment Banking, Private Equity & Wealth Management systems with real institutional clarity.
+    </p>
+    <a href="#solutions" class="btn">Explore Programs</a>
+  </div>
 
-<p>
-Most graduates are taught theory. Very few are taught how financial institutions actually operate.
-GSBF bridges that gap with real-world system education.
-</p>
-
-<a href="#solutions" class="btn">Explore Programs</a>
+  <div class="hero-chart">
+    <svg class="chart-line" viewBox="0 0 520 300">
+      <path d="M20 250 
+               L120 220 
+               L200 190 
+               L280 160 
+               L360 120 
+               L440 90 
+               L500 60" />
+    </svg>
+  </div>
 </section>
-
-<!-- ===== ABOUT ===== -->
-
+  
 <section id="about" class="section">
 <h2>What GSBF Is</h2>
-
 <p>
 GSBF is an independent learning platform focused on practical financial systems education —
 helping learners understand how capital flows through investment banking,
@@ -323,8 +411,6 @@ venture capital, and wealth ecosystems.
 </div>
 </section>
 
-<!-- ===== PROGRAMS ===== -->
-
 <section id="solutions" class="section">
 <h2>Programs</h2>
 
@@ -354,16 +440,12 @@ venture capital, and wealth ecosystems.
 </div>
 </section>
 
-<!-- ===== INSTITUTIONS ===== -->
-
 <section id="institutions" class="section">
 <h2>Institutional Partnerships</h2>
 <p>
 GSBF partners with organizations and communities seeking financial education and system clarity.
 </p>
 </section>
-
-<!-- ===== APPLY ===== -->
 
 <section id="apply" class="section">
 <h2>Apply</h2>
