@@ -29,8 +29,6 @@ body{
   line-height:1.6;
 }
 
-/* HEADER */
-
 header{
   padding:20px 8%;
   display:flex;
@@ -52,17 +50,13 @@ nav a{
   font-size:14px;
 }
 
-nav a:hover{color:var(--gold);}
-
-/* HERO */
-
 .hero{
   padding:100px 8%;
   max-width:950px;
 }
 
 .hero h1{
-  font-size:42px;
+  font-size:40px;
   color:var(--gold);
   margin-bottom:20px;
 }
@@ -82,9 +76,8 @@ nav a:hover{color:var(--gold);}
   border-radius:6px;
   text-decoration:none;
   margin-top:15px;
+  cursor:pointer;
 }
-
-/* SECTIONS */
 
 .section{
   padding:80px 8%;
@@ -96,14 +89,6 @@ nav a:hover{color:var(--gold);}
   color:var(--gold);
   margin-bottom:20px;
 }
-
-.section p{
-  color:var(--soft);
-  margin-bottom:15px;
-  max-width:950px;
-}
-
-/* GRID */
 
 .grid{
   display:grid;
@@ -117,6 +102,7 @@ nav a:hover{color:var(--gold);}
   padding:25px;
   border-radius:10px;
   border:1px solid rgba(255,255,255,0.08);
+  cursor:pointer;
 }
 
 .card h3{
@@ -124,9 +110,11 @@ nav a:hover{color:var(--gold);}
   margin-bottom:10px;
 }
 
-.card p{
-  font-size:14px;
+.details{
+  display:none;
+  margin-top:15px;
   color:var(--soft);
+  font-size:14px;
 }
 
 .price{
@@ -135,17 +123,18 @@ nav a:hover{color:var(--gold);}
   margin-top:10px;
 }
 
+ul{
+  margin-left:18px;
+  margin-top:8px;
+}
+
 footer{
   padding:40px 8%;
   background:var(--navy);
   color:var(--soft);
   text-align:center;
-  font-size:14px;
 }
 
-@media(max-width:768px){
-.hero h1{font-size:30px;}
-}
 </style>
 </head>
 
@@ -154,15 +143,11 @@ footer{
 <header>
 <div class="logo">GSBF — Graduate School of Banking & Finance</div>
 <nav>
-<a href="#program">Program</a>
-<a href="#tiers">Tiers</a>
-<a href="#careers">Careers</a>
-<a href="#why">Why GSBF</a>
+<a href="#tiers">Programs</a>
+<a href="#learning">Learning</a>
 <a href="#apply">Apply</a>
 </nav>
 </header>
-
-<!-- HERO -->
 
 <section class="hero">
 
@@ -177,151 +162,101 @@ Private Equity, Venture Capital, and Wealth Management.
 The program offers rigorous training, certification, and career positioning.
 </p>
 
-<p>
-This is not generic finance education. It is structured professional training
-designed for serious career transformation.
-</p>
-
-<p>
-Limited seats available. Selection is competitive.
-</p>
-
 <a href="#apply" class="btn">Apply for Next Cohort</a>
 
 </section>
 
-<!-- PROGRAM OVERVIEW -->
-
-<section id="program" class="section">
-
-<h2>Program Overview</h2>
-
-<p>
-GSBF is an independent learning platform focused on preparing serious learners
-for elite finance careers. We teach real-world frameworks used in investment
-banking, private equity, venture capital, and wealth management.
-</p>
-
-<p>
-Our training combines structured curriculum, applied case work,
-professional certification, and career positioning strategy.
-</p>
-
-</section>
-
-<!-- CERTIFICATION TIERS -->
+<!-- CERTIFICATION PATHWAY -->
 
 <section id="tiers" class="section">
 
-<h2>Certification Pathway</h2>
+<h2>Certification Pathway (Click a program to view modules)</h2>
 
 <div class="grid">
 
-<div class="card">
+<div class="card" onclick="toggleDetails('cffa')">
 <h3>CFFA — Certified Finance Foundations Associate</h3>
-<p>
-Entry-level professional foundation covering financial markets,
-accounting basics, valuation principles, and investment frameworks.
-</p>
-<p><strong>Duration:</strong> 8–10 weeks</p>
-<div class="price">Investment: $600 – $900</div>
+<p>Duration: 8–10 weeks</p>
+<div class="price">$600 – $900</div>
+
+<div id="cffa" class="details">
+<strong>Modules:</strong>
+<ul>
+<li>Financial Markets Fundamentals</li>
+<li>Accounting & Financial Statements</li>
+<li>Introduction to Valuation</li>
+<li>Investment Frameworks</li>
+<li>Case Study Workshops</li>
+</ul>
+</div>
 </div>
 
-<div class="card">
+<div class="card" onclick="toggleDetails('cip')">
 <h3>CIP — Certified Investment Professional</h3>
-<p>
-Intermediate training focused on deal analysis, valuation modeling,
-portfolio strategy, and investment decision-making.
-</p>
-<p><strong>Duration:</strong> 10–12 weeks</p>
-<div class="price">Investment: $1,500 – $2,500</div>
+<p>Duration: 10–12 weeks</p>
+<div class="price">$1,500 – $2,500</div>
+
+<div id="cip" class="details">
+<strong>Modules:</strong>
+<ul>
+<li>Advanced Valuation Techniques</li>
+<li>Deal Analysis & Structuring</li>
+<li>Portfolio Strategy</li>
+<li>Investment Case Simulations</li>
+<li>Professional Reporting</li>
+</ul>
+</div>
 </div>
 
-<div class="card">
+<div class="card" onclick="toggleDetails('caip')">
 <h3>CAIP — Certified Advanced Investment Professional</h3>
-<p>
-Advanced professional training in transaction modeling,
-capital structuring, and high-level investment frameworks.
-</p>
-<p><strong>Duration:</strong> 12–16 weeks</p>
-<div class="price">Investment: $3,500 – $6,000</div>
+<p>Duration: 12–16 weeks</p>
+<div class="price">$3,500 – $6,000</div>
+
+<div id="caip" class="details">
+<strong>Modules:</strong>
+<ul>
+<li>Transaction Modeling</li>
+<li>Capital Structuring</li>
+<li>Risk & Strategy Frameworks</li>
+<li>Real Investment Simulations</li>
+<li>Capstone Investment Project</li>
+</ul>
+</div>
 </div>
 
 </div>
 
 </section>
 
-<!-- CAREER PATHWAYS -->
+<!-- LEARNING MODE -->
 
-<section id="careers" class="section">
+<section id="learning" class="section">
 
-<h2>Career Pathways</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Investment Banking</h3>
-<p>Financial analyst roles, valuation advisory, and transaction support.</p>
-</div>
-
-<div class="card">
-<h3>Private Equity & Venture Capital</h3>
-<p>Deal evaluation, portfolio management, and growth strategy.</p>
-</div>
-
-<div class="card">
-<h3>Wealth Management</h3>
-<p>Investment advisory, asset allocation, and client strategy.</p>
-</div>
-
-<div class="card">
-<h3>Entrepreneurial Finance</h3>
-<p>Building ventures around financial systems and capital strategy.</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- WHY GSBF -->
-
-<section id="why" class="section">
-
-<h2>Why GSBF</h2>
+<h2>Mode of Learning</h2>
 
 <p>
-GSBF exists for learners who want serious credibility and structured entry
-into elite finance careers.
+GSBF uses a hybrid professional learning model combining structured lectures,
+guided self-study, case workshops, and applied projects.
 </p>
 
-<p>
-We focus on merit, discipline, and professional standards.
-Our programs emphasize real-world application, not theoretical shortcuts.
-</p>
+<ul>
+<li>Live online sessions</li>
+<li>Recorded lectures</li>
+<li>Weekly case discussions</li>
+<li>Practical assignments</li>
+<li>Final certification assessment</li>
+</ul>
 
-<p>
-Graduates leave with recognized certification, analytical capability,
-and clear career positioning.
-</p>
+<h2 style="margin-top:40px;">Learning Tools</h2>
 
-</section>
-
-<!-- ADMISSIONS -->
-
-<section class="section">
-
-<h2>Admissions & Eligibility</h2>
-
-<p>
-We operate a two-track admissions system:
-academic entry and practitioner entry.
-Both pathways are merit-based.
-</p>
-
-<p>
-Applicants are assessed through aptitude evaluation and interview.
-Successful candidates are placed into the appropriate certification tier.
-</p>
+<ul>
+<li>Financial modeling software</li>
+<li>Spreadsheet analysis tools</li>
+<li>Case simulation platforms</li>
+<li>Professional collaboration tools</li>
+<li>Private learner community</li>
+</ul>
 
 </section>
 
@@ -333,12 +268,7 @@ Successful candidates are placed into the appropriate certification tier.
 
 <p>
 Admission is selective and cohort-based.
-We accept a limited number of learners per intake.
-</p>
-
-<p>
-If you are serious about entering elite finance,
-we invite you to apply.
+Limited seats available per intake.
 </p>
 
 <a href="#" class="btn">Start Application</a>
@@ -347,10 +277,16 @@ we invite you to apply.
 
 <footer>
 
-© 2026 GSBF — Graduate School of Banking & Finance  
-Professional Finance Training Platform
+© 2026 GSBF — Graduate School of Banking & Finance
 
 </footer>
+
+<script>
+function toggleDetails(id){
+  var el=document.getElementById(id);
+  el.style.display=(el.style.display==="block")?"none":"block";
+}
+</script>
 
 </body>
 </html>
