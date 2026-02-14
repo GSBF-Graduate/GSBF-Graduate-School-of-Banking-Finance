@@ -4,145 +4,147 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GSBF — Professional Training Program</title>
+<title>GSBF — Graduate School of Banking & Finance</title>
 
 <style>
 :root {
-  --navy: #0b1f3a;
-  --royal: #123c73;
-  --gold: #f5c242;
-  --green: #1db954;
-  --white: #ffffff;
-  --soft: #cfd8e3;
+  --navy:#0b1f3a;
+  --royal:#123c73;
+  --gold:#f5c242;
+  --green:#1db954;
+  --white:#ffffff;
+  --soft:#cfd8e3;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: system-ui, -apple-system, sans-serif;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui,-apple-system,sans-serif;
 }
 
-body {
-  background: linear-gradient(135deg, var(--navy), var(--royal));
-  color: var(--white);
-  line-height: 1.6;
+body{
+  background:linear-gradient(135deg,var(--navy),var(--royal));
+  color:var(--white);
+  line-height:1.6;
 }
 
 /* HEADER */
 
-header {
-  padding: 20px 8%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+header{
+  padding:20px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
-.logo {
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--gold);
+.logo{
+  font-weight:700;
+  font-size:18px;
+  color:var(--gold);
 }
 
-nav a {
-  color: var(--soft);
-  text-decoration: none;
-  margin-left: 25px;
-  font-size: 14px;
+nav a{
+  color:var(--soft);
+  text-decoration:none;
+  margin-left:25px;
+  font-size:14px;
 }
 
-nav a:hover {
-  color: var(--gold);
-}
+nav a:hover{color:var(--gold);}
 
 /* HERO */
 
-.hero {
-  padding: 100px 8%;
-  max-width: 900px;
+.hero{
+  padding:100px 8%;
+  max-width:950px;
 }
 
-.hero h1 {
-  font-size: 42px;
-  color: var(--gold);
-  margin-bottom: 20px;
+.hero h1{
+  font-size:42px;
+  color:var(--gold);
+  margin-bottom:20px;
 }
 
-.hero p {
-  font-size: 18px;
-  color: var(--soft);
-  margin-bottom: 18px;
+.hero p{
+  font-size:18px;
+  color:var(--soft);
+  margin-bottom:15px;
 }
 
-.btn {
-  display: inline-block;
-  padding: 14px 28px;
-  background: var(--gold);
-  color: #000;
-  font-weight: 600;
-  border-radius: 6px;
-  text-decoration: none;
-  margin-top: 15px;
+.btn{
+  display:inline-block;
+  padding:14px 28px;
+  background:var(--gold);
+  color:#000;
+  font-weight:600;
+  border-radius:6px;
+  text-decoration:none;
+  margin-top:15px;
 }
 
 /* SECTIONS */
 
-.section {
-  padding: 80px 8%;
-  background: rgba(0,0,0,0.15);
+.section{
+  padding:80px 8%;
+  background:rgba(0,0,0,0.15);
 }
 
-.section h2 {
-  font-size: 28px;
-  color: var(--gold);
-  margin-bottom: 20px;
+.section h2{
+  font-size:30px;
+  color:var(--gold);
+  margin-bottom:20px;
 }
 
-.section p {
-  color: var(--soft);
-  margin-bottom: 15px;
-  max-width: 900px;
+.section p{
+  color:var(--soft);
+  margin-bottom:15px;
+  max-width:950px;
 }
 
 /* GRID */
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+  margin-top:30px;
 }
 
-.card {
-  background: rgba(255,255,255,0.05);
-  padding: 25px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.08);
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:25px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.08);
 }
 
-.card h3 {
-  color: var(--gold);
-  margin-bottom: 10px;
+.card h3{
+  color:var(--gold);
+  margin-bottom:10px;
 }
 
-.card p {
-  font-size: 14px;
-  color: var(--soft);
+.card p{
+  font-size:14px;
+  color:var(--soft);
 }
 
-footer {
-  padding: 40px 8%;
-  background: var(--navy);
-  color: var(--soft);
-  text-align: center;
-  font-size: 14px;
+.price{
+  color:var(--green);
+  font-weight:700;
+  margin-top:10px;
 }
 
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 30px;
-  }
+footer{
+  padding:40px 8%;
+  background:var(--navy);
+  color:var(--soft);
+  text-align:center;
+  font-size:14px;
+}
+
+@media(max-width:768px){
+.hero h1{font-size:30px;}
 }
 </style>
 </head>
@@ -150,117 +152,204 @@ footer {
 <body>
 
 <header>
-  <div class="logo">GSBF — Graduate School of Banking & Finance</div>
-  <nav>
-    <a href="#program">Program</a>
-    <a href="#tiers">Certification</a>
-    <a href="#admissions">Admissions</a>
-    <a href="#apply">Apply</a>
-  </nav>
+<div class="logo">GSBF — Graduate School of Banking & Finance</div>
+<nav>
+<a href="#program">Program</a>
+<a href="#tiers">Tiers</a>
+<a href="#careers">Careers</a>
+<a href="#why">Why GSBF</a>
+<a href="#apply">Apply</a>
+</nav>
 </header>
 
+<!-- HERO -->
+
 <section class="hero">
-  <h1>Applications are now open for the GSBF Professional Training Program</h1>
 
-  <p>
-    We train ambitious graduates and professionals to break into Investment Banking,
-    Private Equity, Venture Capital, and Wealth Management.
-  </p>
+<h1>Applications are now open for the GSBF Professional Training Program</h1>
 
-  <p>
-    The program offers rigorous training, certification, and career positioning.
-  </p>
+<p>
+We train ambitious graduates and professionals to break into Investment Banking,
+Private Equity, Venture Capital, and Wealth Management.
+</p>
 
-  <p>
-    This is not generic finance education. It is structured professional training
-    designed for serious career transformation.
-  </p>
+<p>
+The program offers rigorous training, certification, and career positioning.
+</p>
 
-  <p>
-    Limited seats available. Selection is competitive.
-  </p>
+<p>
+This is not generic finance education. It is structured professional training
+designed for serious career transformation.
+</p>
 
-  <a href="#apply" class="btn">Apply for Next Cohort</a>
+<p>
+Limited seats available. Selection is competitive.
+</p>
+
+<a href="#apply" class="btn">Apply for Next Cohort</a>
+
 </section>
+
+<!-- PROGRAM OVERVIEW -->
 
 <section id="program" class="section">
-  <h2>The GSBF Professional Program</h2>
 
-  <p>
-    GSBF is an independent learning platform dedicated to equipping young graduates
-    and professionals with the knowledge, skills, and network to succeed in elite
-    finance careers or build businesses around financial systems.
-  </p>
+<h2>Program Overview</h2>
 
-  <p>
-    The program focuses on real-world frameworks used in investment banking,
-    private equity, venture capital, and wealth advisory — not academic theory alone.
-  </p>
+<p>
+GSBF is an independent learning platform focused on preparing serious learners
+for elite finance careers. We teach real-world frameworks used in investment
+banking, private equity, venture capital, and wealth management.
+</p>
+
+<p>
+Our training combines structured curriculum, applied case work,
+professional certification, and career positioning strategy.
+</p>
+
 </section>
+
+<!-- CERTIFICATION TIERS -->
 
 <section id="tiers" class="section">
-  <h2>Certification Pathway</h2>
 
-  <div class="grid">
+<h2>Certification Pathway</h2>
 
-    <div class="card">
-      <h3>CFFA — Certified Finance Foundations Associate</h3>
-      <p>
-        Entry-level training in financial analysis, markets, and investment
-        fundamentals. Designed for beginners entering finance.
-      </p>
-    </div>
+<div class="grid">
 
-    <div class="card">
-      <h3>CIP — Certified Investment Professional</h3>
-      <p>
-        Intermediate professional training in valuation, deal analysis,
-        and portfolio strategy for IB/PE/VC pathways.
-      </p>
-    </div>
+<div class="card">
+<h3>CFFA — Certified Finance Foundations Associate</h3>
+<p>
+Entry-level professional foundation covering financial markets,
+accounting basics, valuation principles, and investment frameworks.
+</p>
+<p><strong>Duration:</strong> 8–10 weeks</p>
+<div class="price">Investment: $600 – $900</div>
+</div>
 
-    <div class="card">
-      <h3>CAIP — Certified Advanced Investment Professional</h3>
-      <p>
-        Advanced-level training in transaction modeling, capital strategy,
-        and investment decision frameworks.
-      </p>
-    </div>
+<div class="card">
+<h3>CIP — Certified Investment Professional</h3>
+<p>
+Intermediate training focused on deal analysis, valuation modeling,
+portfolio strategy, and investment decision-making.
+</p>
+<p><strong>Duration:</strong> 10–12 weeks</p>
+<div class="price">Investment: $1,500 – $2,500</div>
+</div>
 
-  </div>
+<div class="card">
+<h3>CAIP — Certified Advanced Investment Professional</h3>
+<p>
+Advanced professional training in transaction modeling,
+capital structuring, and high-level investment frameworks.
+</p>
+<p><strong>Duration:</strong> 12–16 weeks</p>
+<div class="price">Investment: $3,500 – $6,000</div>
+</div>
+
+</div>
+
 </section>
 
-<section id="admissions" class="section">
-  <h2>Admissions</h2>
+<!-- CAREER PATHWAYS -->
 
-  <p>
-    GSBF operates a selective admissions process designed to identify
-    serious and committed learners.
-  </p>
+<section id="careers" class="section">
 
-  <p>
-    Applicants may qualify through academic credentials or demonstrated
-    practitioner capability via assessment and interview.
-  </p>
+<h2>Career Pathways</h2>
 
-  <p>
-    We value merit, discipline, and long-term professional intent.
-  </p>
+<div class="grid">
+
+<div class="card">
+<h3>Investment Banking</h3>
+<p>Financial analyst roles, valuation advisory, and transaction support.</p>
+</div>
+
+<div class="card">
+<h3>Private Equity & Venture Capital</h3>
+<p>Deal evaluation, portfolio management, and growth strategy.</p>
+</div>
+
+<div class="card">
+<h3>Wealth Management</h3>
+<p>Investment advisory, asset allocation, and client strategy.</p>
+</div>
+
+<div class="card">
+<h3>Entrepreneurial Finance</h3>
+<p>Building ventures around financial systems and capital strategy.</p>
+</div>
+
+</div>
+
 </section>
+
+<!-- WHY GSBF -->
+
+<section id="why" class="section">
+
+<h2>Why GSBF</h2>
+
+<p>
+GSBF exists for learners who want serious credibility and structured entry
+into elite finance careers.
+</p>
+
+<p>
+We focus on merit, discipline, and professional standards.
+Our programs emphasize real-world application, not theoretical shortcuts.
+</p>
+
+<p>
+Graduates leave with recognized certification, analytical capability,
+and clear career positioning.
+</p>
+
+</section>
+
+<!-- ADMISSIONS -->
+
+<section class="section">
+
+<h2>Admissions & Eligibility</h2>
+
+<p>
+We operate a two-track admissions system:
+academic entry and practitioner entry.
+Both pathways are merit-based.
+</p>
+
+<p>
+Applicants are assessed through aptitude evaluation and interview.
+Successful candidates are placed into the appropriate certification tier.
+</p>
+
+</section>
+
+<!-- APPLY -->
 
 <section id="apply" class="section">
-  <h2>Apply Now</h2>
 
-  <p>
-    Admission is competitive and cohort-based.
-    Successful applicants receive placement into the appropriate certification tier.
-  </p>
+<h2>Apply Now</h2>
 
-  <a href="#" class="btn">Start Application</a>
+<p>
+Admission is selective and cohort-based.
+We accept a limited number of learners per intake.
+</p>
+
+<p>
+If you are serious about entering elite finance,
+we invite you to apply.
+</p>
+
+<a href="#" class="btn">Start Application</a>
+
 </section>
 
 <footer>
-  © 2026 GSBF — Graduate School of Banking & Finance
+
+© 2026 GSBF — Graduate School of Banking & Finance  
+Professional Finance Training Platform
+
 </footer>
 
 </body>
