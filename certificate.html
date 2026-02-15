@@ -4,54 +4,253 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GSBF Certificate</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <style>
-:root {--gold:#f5c242;--white:#ffffff;}
-body {background: linear-gradient(135deg, #123c73, #0b1f3a); font-family: 'Georgia', serif; padding:40px; color:#000; display:flex; justify-content:center;}
-.certificate {position: relative; max-width: 850px; background: var(--white); border:8px solid var(--gold); border-radius:15px; padding:60px 50px; text-align:center; box-shadow:0 15px 30px rgba(0,0,0,0.3);}
-.certificate .watermark {position:absolute;top:50%;left:50%;font-size:120px;color:var(--gold);opacity:0.08;transform:translate(-50%, -50%) rotate(-15deg);font-weight:bold;pointer-events:none;}
-.certificate h1 {font-size:36px;color:var(--gold);margin-bottom:10px;}
-.certificate h2 {font-size:28px;margin:20px 0;}
-.certificate p {font-size:18px;margin:10px 0;}
-.signatures {display:flex;justify-content:space-between;margin-top:60px;padding:0 40px;}
-.signature-line {border-top:1px solid #000;width:180px;margin-top:5px;}
+
+:root {
+  --gold:#F2C230;
+  --gold-deep:#B8860B;
+  --navy:#0A2E63;
+  --navy-deep:#071F45;
+  --white:#ffffff;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+  background:linear-gradient(135deg,#0A2E63,#071F45);
+  font-family:'Georgia',serif;
+  padding:40px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* SAFE WRAPPER */
+.certificate-wrapper{
+  padding:25px;
+}
+
+/* CERTIFICATE */
+.certificate{
+  position:relative;
+  width:100%;
+  max-width:900px;
+  background:var(--white);
+  border:10px solid var(--gold);
+  padding:70px 60px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,0.35);
+}
+
+.certificate::before{
+  content:"";
+  position:absolute;
+  inset:15px;
+  border:2px solid var(--gold-deep);
+  pointer-events:none;
+}
+
+/* LOGO */
+.cert-logo{
+  width:120px;
+  margin-bottom:25px;
+}
+
+/* WATERMARK */
+.watermark{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(-18deg);
+  font-size:140px;
+  font-weight:bold;
+  color:var(--gold);
+  opacity:0.05;
+  pointer-events:none;
+}
+
+/* TEXT */
+.certificate h1{
+  font-size:38px;
+  color:var(--gold-deep);
+  margin-bottom:15px;
+}
+
+.certificate h2{
+  font-size:28px;
+  margin:25px 0;
+  color:var(--navy);
+}
+
+.certificate p{
+  font-size:18px;
+  margin:10px 0;
+  color:#222;
+}
+
+.signature-identity{
+  font-weight:bold;
+  color:var(--navy);
+  margin-top:10px;
+}
+
+/* CERTIFICATE ID */
+.cert-id{
+  position:absolute;
+  top:25px;
+  right:40px;
+  font-size:14px;
+  font-weight:bold;
+  color:var(--navy-deep);
+}
+
+/* SIGNATURES */
+.signatures{
+  display:flex;
+  justify-content:space-between;
+  margin-top:80px;
+  padding:0 40px;
+  align-items:flex-end;
+}
+
+.signature-block{
+  text-align:center;
+}
+
+.signature-img{
+  width:180px;
+  margin-bottom:5px;
+}
+
+.signature-line{
+  border-top:1px solid #000;
+  width:200px;
+  margin-top:5px;
+}
+
+/* QR */
+.qr-container{
+  position:absolute;
+  bottom:30px;
+  right:40px;
+  text-align:center;
+}
+
+.qr-label{
+  font-size:12px;
+  margin-top:5px;
+  color:#333;
+}
+
+/* PRINT SAFE */
+@media print{
+  body{background:none;padding:0;}
+  .certificate-wrapper{padding:0;}
+  .certificate{box-shadow:none;}
+}
+
 </style>
 </head>
+
 <body>
 
-<div class="certificate">
-  <div class="watermark">GSBF</div>
-  <h1>Certificate of Achievement</h1>
-  <p>This certifies that</p>
-  <h2 id="certName">[Applicant Name]</h2>
-  <p>has successfully completed the</p>
-  <h2 id="certTrack">[Program Track]</h2>
-  <p>Career Pathway: <span id="certCareer">[Career Pathway]</span></p>
-  <p>GSBF Signature Identity:</p>
-  <p id="signatureIdentity" style="font-weight:bold;color:#123c73;"></p>
+<div class="certificate-wrapper">
+  <div class="certificate">
 
-  <div class="signatures">
-    <div>
-      <p>Program Director</p>
-      <div class="signature-line"></div>
+    <div class="watermark">GSBF</div>
+
+    <div class="cert-id" id="certID"></div>
+
+    <img class="cert-logo" 
+         src="https://raw.githubusercontent.com/GSBF-Graduate/GSBF-Graduate-School-of-Banking-Finance/main/gsbf-logo.png" 
+         alt="GSBF Logo">
+
+    <h1>Certificate of Achievement</h1>
+
+    <p>This certifies that</p>
+    <h2 id="certName">[Applicant Name]</h2>
+
+    <p>has successfully completed the</p>
+    <h2 id="certTrack">[Program Track]</h2>
+
+    <p>Career Pathway: <span id="certCareer">[Career Pathway]</span></p>
+
+    <p>GSBF Signature Identity:</p>
+    <p id="signatureIdentity" class="signature-identity"></p>
+
+    <div class="signatures">
+
+      <div class="signature-block">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Signature_example.svg" 
+             class="signature-img" alt="Director Signature">
+        <p>Program Director</p>
+        <div class="signature-line"></div>
+      </div>
+
+      <div class="signature-block">
+        <p id="certDate"></p>
+        <p>Date</p>
+        <div class="signature-line"></div>
+      </div>
+
     </div>
-    <div>
-      <p>Date</p>
-      <div class="signature-line"></div>
+
+    <div class="qr-container">
+      <div id="qrcode"></div>
+      <div class="qr-label">Scan to Verify</div>
     </div>
+
   </div>
 </div>
 
 <script>
+
 let applicants = JSON.parse(localStorage.getItem('gsbfApplicants') || '[]');
+
 if(applicants.length>0){
   let latest = applicants[applicants.length-1];
+
+  // Populate fields
   document.getElementById('certName').textContent = latest.name;
   document.getElementById('certTrack').textContent = latest.track;
   document.getElementById('certCareer').textContent = latest.careerPath;
 
-  document.getElementById('signatureIdentity').textContent =
+  let signatureIdentity =
     `${latest.name} | GSBF ${latest.track.split(' — ')[0]} — ${latest.track.split(' — ')[1]} | ${latest.careerPath}`;
+
+  document.getElementById('signatureIdentity').textContent = signatureIdentity;
+
+  // AUTO CERTIFICATE ID
+  let certID = "GSBF-" + new Date().getFullYear() + "-" + 
+               Math.floor(100000 + Math.random() * 900000);
+
+  document.getElementById('certID').textContent = "Certificate ID: " + certID;
+
+  // DATE
+  let today = new Date();
+  document.getElementById('certDate').textContent =
+    today.toLocaleDateString();
+
+  // QR CODE CONTENT
+  let verificationData = `
+  GSBF Certificate Verification
+  Certificate ID: ${certID}
+  Name: ${latest.name}
+  Program: ${latest.track}
+  Career Pathway: ${latest.careerPath}
+  Date Issued: ${today.toLocaleDateString()}
+  `;
+
+  new QRCode(document.getElementById("qrcode"), {
+    text: verificationData,
+    width: 100,
+    height: 100
+  });
 }
+
 </script>
 
 </body>
