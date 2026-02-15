@@ -25,9 +25,9 @@ input,select{padding:8px;width:100%;margin-top:5px;border-radius:5px;border:1px 
 <label>Program Track:<br>
 <select name="track" required>
   <option value="">Select Program Track</option>
-  <option value="CFFA">CFFA — Certified Finance Foundations Associate</option>
-  <option value="CIP">CIP — Certified Investment Professional</option>
-  <option value="CAIP">CAIP — Certified Advanced Investment Practitioner</option>
+  <option value="CFFA — Certified Finance Foundations Associate">CFFA — Certified Finance Foundations Associate</option>
+  <option value="CIP — Certified Investment Professional">CIP — Certified Investment Professional</option>
+  <option value="CAIP — Certified Advanced Investment Practitioner">CAIP — Certified Advanced Investment Practitioner</option>
 </select>
 </label><br><br>
 
@@ -52,7 +52,6 @@ input,select{padding:8px;width:100%;margin-top:5px;border-radius:5px;border:1px 
 <p style="margin-top:20px;">
 <a href="dashboard.html" class="btn">View Dashboard</a>
 <a href="certificate.html" class="btn">View Certificate</a>
-<a href="credential.html" class="btn">View Digital Credential</a>
 </p>
 </section>
 
@@ -65,7 +64,7 @@ form.addEventListener('submit', e => {
   const data = new FormData(form);
   const name = data.get('name');
   const email = data.get('email');
-  const trackFull = data.get('track'); // Already full name from select
+  const track = data.get('track');
   const careerPath = data.get('careerPath');
   const finance = parseInt(data.get('financeScore'));
   const analysis = parseInt(data.get('analysisScore'));
@@ -78,16 +77,11 @@ form.addEventListener('submit', e => {
   if(percentage>=70) status = "✅ Strong Candidate";
   else if(percentage>=50) status = "⚠️ Consider for Review";
 
-  // Generate GSBF Signature Identity
-  const gsbfIdentity = `${name} | GSBF ${trackFull} | ${careerPath}`;
-  localStorage.setItem('gsbfIdentity', gsbfIdentity);
-
-  // Save applicant in localStorage
   let applicants = JSON.parse(localStorage.getItem('gsbfApplicants') || '[]');
   applicants.push({
     name,
     email,
-    track: trackFull,
+    track,
     careerPath,
     finance,
     analysis,
@@ -98,7 +92,7 @@ form.addEventListener('submit', e => {
   });
   localStorage.setItem('gsbfApplicants', JSON.stringify(applicants));
 
-  resultDiv.textContent = `Application Score: ${total}/${maxScore} (${percentage}%) - ${status}\nGSBF Signature Identity Generated!`;
+  resultDiv.textContent = `Application Score: ${total}/${maxScore} (${percentage}%) - ${status}`;
   form.reset();
 });
 </script>
