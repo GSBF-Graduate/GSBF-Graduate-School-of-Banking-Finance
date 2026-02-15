@@ -11,7 +11,6 @@ body{background:linear-gradient(135deg,#0b1f3a,#123c73);color:#fff;font-family:s
 h2{color:var(--gold);margin-bottom:20px;}
 input,select{padding:8px;width:100%;margin-top:5px;border-radius:5px;border:1px solid #ccc;}
 .btn{display:inline-block;padding:12px 25px;background:var(--gold);color:#000;font-weight:600;border-radius:6px;text-decoration:none;margin-top:15px;cursor:pointer;}
-.identity-box{margin-top:20px;padding:12px;background:#eef1f5;color:#000;border-radius:8px;font-weight:600;}
 </style>
 </head>
 <body>
@@ -26,9 +25,9 @@ input,select{padding:8px;width:100%;margin-top:5px;border-radius:5px;border:1px 
 <label>Program Track:<br>
 <select name="track" required>
   <option value="">Select Program Track</option>
-  <option value="CFFA">CFFA</option>
-  <option value="CIP">CIP</option>
-  <option value="CAIP">CAIP</option>
+  <option value="CFFA">CFFA — Certified Finance Foundations Associate</option>
+  <option value="CIP">CIP — Certified Investment Professional</option>
+  <option value="CAIP">CAIP — Certified Advanced Investment Practitioner</option>
 </select>
 </label><br><br>
 
@@ -49,27 +48,16 @@ input,select{padding:8px;width:100%;margin-top:5px;border-radius:5px;border:1px 
 <button type="submit" class="btn">Submit Application</button>
 </form>
 
-<div id="appResult" class="identity-box">Your application score will appear here.</div>
-
-<hr style="margin:40px 0;">
-<h2>GSBF Signature Identity</h2>
-<div style="background:white;padding:20px;border-radius:10px;color:#000;">
-<button onclick="generateIdentity()" style="padding:10px 15px;background:black;color:white;border:none;border-radius:6px;cursor:pointer;">
-Generate Identity
-</button>
-<div id="identityBox" class="identity-box">Your GSBF Identity will appear here</div>
-<button onclick="copyIdentity()" style="margin-top:10px;padding:8px;background:#0077b5;color:white;border:none;border-radius:6px;cursor:pointer;">
-Copy to LinkedIn
-</button>
-<br><br>
+<div id="appResult" style="margin-top:20px;color:var(--gold);font-weight:600;"></div>
+<p style="margin-top:20px;">
+<a href="dashboard.html" class="btn">View Dashboard</a>
 <a href="certificate.html" class="btn">View Certificate</a>
-<a href="credential.html" class="btn">Digital Credential</a>
-</div>
-
+<a href="credential.html" class="btn">View Digital Credential</a>
+</p>
 </section>
 
 <script>
-// Map short code to full program name
+// Map short code to full program name (optional fallback)
 const programMap = {
   "CFFA": "CFFA — Certified Finance Foundations Associate",
   "CIP": "CIP — Certified Investment Professional",
@@ -79,14 +67,12 @@ const programMap = {
 const form = document.getElementById('appForm');
 const resultDiv = document.getElementById('appResult');
 
-// Handle application form submission and scoring
 form.addEventListener('submit', e => {
   e.preventDefault();
   const data = new FormData(form);
   const name = data.get('name');
   const email = data.get('email');
-  const trackCode = data.get('track');
-  const trackFull = programMap[trackCode] || trackCode;
+  const trackFull = data.get('track'); // Already full name from select
   const careerPath = data.get('careerPath');
   const finance = parseInt(data.get('financeScore'));
   const analysis = parseInt(data.get('analysisScore'));
@@ -99,7 +85,11 @@ form.addEventListener('submit', e => {
   if(percentage>=70) status = "✅ Strong Candidate";
   else if(percentage>=50) status = "⚠️ Consider for Review";
 
-  // Save applicant data in localStorage
+  // Generate GSBF Signature Identity
+  const gsbfIdentity = `${name} | GSBF ${trackFull} | ${careerPath}`;
+  localStorage.setItem('gsbfIdentity', gsbfIdentity);
+
+  // Save applicant in localStorage
   let applicants = JSON.parse(localStorage.getItem('gsbfApplicants') || '[]');
   applicants.push({
     name,
@@ -115,33 +105,9 @@ form.addEventListener('submit', e => {
   });
   localStorage.setItem('gsbfApplicants', JSON.stringify(applicants));
 
-  // Show result
-  resultDiv.textContent = `Application Score: ${total}/${maxScore} (${percentage}%) - ${status}`;
+  resultDiv.textContent = `Application Score: ${total}/${maxScore} (${percentage}%) - ${status}\nGSBF Signature Identity Generated!`;
   form.reset();
 });
-
-// GSBF Signature Identity generator
-function generateIdentity(){
-  const name = document.querySelector('input[name="name"]').value || "Student Name";
-  const track = document.querySelector('select[name="track"]').value;
-  const careerPath = document.querySelector('select[name="careerPath"]').value;
-  const programFull = programMap[track] || track;
-  const identity = `${name} | GSBF ${programFull} | ${careerPath}`;
-  document.getElementById('identityBox').innerText = identity;
-
-  // Store identity for certificate & digital credential
-  localStorage.setItem('gsbfName', name);
-  localStorage.setItem('gsbfProgram', programFull);
-  localStorage.setItem('gsbfPathway', careerPath);
-  localStorage.setItem('gsbfIdentity', identity);
-}
-
-// Copy to LinkedIn button
-function copyIdentity(){
-  const identity = localStorage.getItem('gsbfIdentity') || "";
-  navigator.clipboard.writeText(identity);
-  alert("✅ GSBF Identity copied! You can paste it on LinkedIn.");
-}
 </script>
 
 </body>
