@@ -6,52 +6,14 @@
 <title>GSBF Certificate</title>
 <style>
 :root {--gold:#f5c242;--white:#ffffff;}
-body {
-  background: linear-gradient(135deg, #123c73, #0b1f3a);
-  font-family: 'Georgia', serif;
-  padding:40px;
-  color:#000;
-  display:flex;
-  justify-content:center;
-}
-.certificate {
-  position: relative;
-  max-width: 850px;
-  background: var(--white);
-  border:8px solid var(--gold);
-  border-radius:15px;
-  padding:60px 50px;
-  text-align:center;
-  box-shadow:0 15px 30px rgba(0,0,0,0.3);
-}
-.certificate .watermark {
-  position:absolute;
-  top:50%;
-  left:50%;
-  font-size:120px;
-  color:var(--gold);
-  opacity:0.08;
-  transform:translate(-50%, -50%) rotate(-15deg);
-  font-weight:bold;
-  pointer-events:none;
-}
+body {background: linear-gradient(135deg, #123c73, #0b1f3a); font-family: 'Georgia', serif; padding:40px; color:#000; display:flex; justify-content:center;}
+.certificate {position: relative; max-width: 850px; background: var(--white); border:8px solid var(--gold); border-radius:15px; padding:60px 50px; text-align:center; box-shadow:0 15px 30px rgba(0,0,0,0.3);}
+.certificate .watermark {position:absolute;top:50%;left:50%;font-size:120px;color:var(--gold);opacity:0.08;transform:translate(-50%, -50%) rotate(-15deg);font-weight:bold;pointer-events:none;}
 .certificate h1 {font-size:36px;color:var(--gold);margin-bottom:10px;}
 .certificate h2 {font-size:28px;margin:20px 0;}
 .certificate p {font-size:18px;margin:10px 0;}
 .signatures {display:flex;justify-content:space-between;margin-top:60px;padding:0 40px;}
 .signature-line {border-top:1px solid #000;width:180px;margin-top:5px;}
-
-/* Identity badge */
-.identity-badge {
-  display:inline-block;
-  margin-top:20px;
-  padding:10px 20px;
-  border-radius:12px;
-  background:var(--gold);
-  color:#000;
-  font-weight:600;
-  font-size:16px;
-}
 </style>
 </head>
 <body>
@@ -66,9 +28,6 @@ body {
   <p>Career Pathway: <span id="certCareer">[Career Pathway]</span></p>
   <p>with outstanding performance and professional distinction.</p>
 
-  <!-- GSBF Signature Identity Badge -->
-  <div id="identityBadge" class="identity-badge">GSBF Signature Identity</div>
-
   <div class="signatures">
     <div>
       <p>Program Director</p>
@@ -82,32 +41,21 @@ body {
 </div>
 
 <script>
-// Prefer using latest identity stored in localStorage
-let identity = localStorage.getItem('gsbfIdentity');
+// Map for full program names
+const programMap = {
+  "CFFA — Certified Finance Foundations Associate": "CFFA — Certified Finance Foundations Associate",
+  "CIP — Certified Investment Professional": "CIP — Certified Investment Professional",
+  "CAIP — Certified Advanced Investment Practitioner": "CAIP — Certified Advanced Investment Practitioner"
+};
 
-// Fallback: use latest applicant if identity not set
-if(!identity){
-  let applicants = JSON.parse(localStorage.getItem('gsbfApplicants') || '[]');
-  if(applicants.length>0){
-    let latest = applicants[applicants.length-1];
-    document.getElementById('certName').textContent = latest.name;
-    document.getElementById('certTrack').textContent = latest.track;
-    document.getElementById('certCareer').textContent = latest.careerPath;
-    identity = `${latest.name} | ${latest.track} | ${latest.careerPath}`;
-  }
-}
+let applicants = JSON.parse(localStorage.getItem('gsbfApplicants') || '[]');
+if(applicants.length>0){
+  let latest = applicants[applicants.length-1];
+  let fullTrack = programMap[latest.track] || latest.track;
 
-// Set identity badge
-if(identity){
-  document.getElementById('identityBadge').textContent = identity;
-
-  // Optional: also populate name/track/career from identity
-  const parts = identity.split('|').map(p=>p.trim());
-  if(parts.length===3){
-    document.getElementById('certName').textContent = parts[0];
-    document.getElementById('certTrack').textContent = parts[1];
-    document.getElementById('certCareer').textContent = parts[2];
-  }
+  document.getElementById('certName').textContent = latest.name;
+  document.getElementById('certTrack').textContent = fullTrack;
+  document.getElementById('certCareer').textContent = latest.careerPath;
 }
 </script>
 
