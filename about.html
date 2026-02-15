@@ -210,10 +210,51 @@ body {
   <div class="team-grid">
 
     <div class="team-card">
-      <img src="cropped-1713948169242.jpg" alt="Lewis Mwaba">
-      <h4>Lewis Mwaba</h4>
-      <p>Founder & Lead Mentor</p>
-    </div>
+  <div class="image-wrapper">
+    <img src="cropped-1713948169242.jpg" alt="Lewis Mwaba">
+    <a href="https://www.linkedin.com/in/mwaba-lewis-77a738134" target="_blank" class="linkedin-overlay">
+      Connect on LinkedIn
+    </a>
+  </div>
+  <h4>Lewis Mwaba</h4>
+  <p>Founder & Lead Mentor</p>
+</div>
+
+<style>
+/* Image wrapper for overlay */
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* LinkedIn overlay button */
+.linkedin-overlay {
+  position: absolute;
+  bottom: -40px; /* hidden by default below image */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0a66c2; /* LinkedIn blue */
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  opacity: 0;
+  transition: bottom 0.3s, opacity 0.3s;
+}
+
+/* Hover effect on card */
+.team-card:hover .linkedin-overlay {
+  bottom: 10px; /* slides up over image */
+  opacity: 1;
+}
+
+/* Optional: slightly scale image on hover */
+.team-card:hover img {
+  transform: scale(1.05);
+}
+</style>
 
     <div class="team-card">
       <img src="placeholder.jpg" alt="Daniel">
