@@ -31,15 +31,19 @@ if(applicants.length===0){
 }else{
   dashboard.innerHTML = applicants.map(a=>`
     <div class="card">
-      <h3>${a.name} — ${a.track} — ${a.careerPath}</h3>
+      <h3>${a.name} | GSBF ${a.track.split(' — ')[0]} — ${a.track.split(' — ')[1]} | ${a.careerPath}</h3>
       <p>Finance Score: ${a.finance}/5</p>
       <p>Analysis Score: ${a.analysis}/5</p>
       <p>Motivation Score: ${a.motivation}/5</p>
       <p>Total Score: ${a.total}/15 (${a.percentage}%)</p>
       <p>Status: <strong style="color: var(--green)">${a.status}</strong></p>
-      <p>GSBF Signature Identity: <strong>${a.name} | ${a.track} | ${a.careerPath}</strong></p>
+      <button onclick="copyLinkedIn('${a.name} | GSBF ${a.track.split(' — ')[0]} — ${a.track.split(' — ')[1]} | ${a.careerPath}')">Copy to LinkedIn</button>
     </div>
   `).join('');
+}
+
+function copyLinkedIn(text){
+  navigator.clipboard.writeText(text).then(()=> alert("GSBF Signature Identity copied!"));
 }
 </script>
 
