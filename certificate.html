@@ -26,7 +26,8 @@ body {background: linear-gradient(135deg, #123c73, #0b1f3a); font-family: 'Georg
   <p>has successfully completed the</p>
   <h2 id="certTrack">[Program Track]</h2>
   <p>Career Pathway: <span id="certCareer">[Career Pathway]</span></p>
-  <p>with outstanding performance and professional distinction.</p>
+  <p>GSBF Signature Identity:</p>
+  <p id="signatureIdentity" style="font-weight:bold;color:#123c73;"></p>
 
   <div class="signatures">
     <div>
@@ -41,21 +42,15 @@ body {background: linear-gradient(135deg, #123c73, #0b1f3a); font-family: 'Georg
 </div>
 
 <script>
-// Map for full program names
-const programMap = {
-  "CFFA — Certified Finance Foundations Associate": "CFFA — Certified Finance Foundations Associate",
-  "CIP — Certified Investment Professional": "CIP — Certified Investment Professional",
-  "CAIP — Certified Advanced Investment Practitioner": "CAIP — Certified Advanced Investment Practitioner"
-};
-
 let applicants = JSON.parse(localStorage.getItem('gsbfApplicants') || '[]');
 if(applicants.length>0){
   let latest = applicants[applicants.length-1];
-  let fullTrack = programMap[latest.track] || latest.track;
-
   document.getElementById('certName').textContent = latest.name;
-  document.getElementById('certTrack').textContent = fullTrack;
+  document.getElementById('certTrack').textContent = latest.track;
   document.getElementById('certCareer').textContent = latest.careerPath;
+
+  document.getElementById('signatureIdentity').textContent =
+    `${latest.name} | GSBF ${latest.track.split(' — ')[0]} — ${latest.track.split(' — ')[1]} | ${latest.careerPath}`;
 }
 </script>
 
