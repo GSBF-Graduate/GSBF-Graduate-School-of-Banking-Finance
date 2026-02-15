@@ -54,6 +54,67 @@ input,select{padding:8px;width:100%;margin-top:5px;border-radius:5px;border:1px 
 <a href="certificate.html" class="btn">View Certificate</a>
 <a href="credential.html" class="btn">View Credential</a>
 </p>
+  <!-- Premium Gold CTA Button -->
+<a href="about.html" class="cta-btn">About Us</a>
+
+<style>
+/* Premium Gold CTA Button */
+.cta-btn {
+  position: relative;              /* for shine animation */
+  display: inline-block;           /* can be placed anywhere */
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #f4c430, #e6b800); /* rich gold gradient */
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  overflow: hidden;                /* hide shine overflow */
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  cursor: pointer;
+}
+
+/* Hover effect: lift and shadow */
+.cta-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+
+/* Shine effect using pseudo-element */
+.cta-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 50%;
+  height: 200%;
+  background: rgba(255,255,255,0.4);
+  transform: rotate(25deg);
+  transition: all 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.cta-btn:hover::before {
+  left: 150%;
+  transition: all 0.7s ease-in-out;
+}
+
+/* Optional: focus outline for accessibility */
+.cta-btn:focus {
+  outline: 2px solid #f4c430;
+  outline-offset: 3px;
+}
+
+/* Responsive adjustment */
+@media (max-width: 600px) {
+  .cta-btn {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+}
+</style>
+
 </section>
 
 <script>
