@@ -241,30 +241,148 @@ footer {
 
   </div>
 </section>
-
+<!-- TEAM -->
 <section class="team-section">
   <h2>Meet The Team</h2>
   <div class="team-grid">
 
+    <!-- Lewis Mwaba with LinkedIn overlay -->
     <div class="team-card">
-      <img src="cropped-1713948169242.jpg" alt="Lewis Mwaba">
+      <div class="image-wrapper">
+        <img src="cropped-1713948169242.jpg" alt="Lewis Mwaba">
+        <a href="https://www.linkedin.com/in/mwaba-lewis-77a738134" target="_blank" class="linkedin-overlay">
+          Connect on LinkedIn
+        </a>
+      </div>
       <h4>Lewis Mwaba</h4>
       <p>Founder & Lead Mentor</p>
     </div>
 
+    <!-- Program Advisor -->
     <div class="team-card">
-      <h4>Program Advisor</h4>
-      <p>Daniel</p>
+      <div class="image-wrapper">
+        <img src="placeholder.jpg" alt="Daniel">
+      </div>
+      <h4>Daniel</h4>
+      <p>Program Advisor</p>
     </div>
 
+    <!-- Learning Coordinator -->
     <div class="team-card">
-      <img src="FB_IMG_1769259474344.jpg" alt="Mercy">
-      <h4>Learning Coordinator</h4>
-      <p>Mercy</p>
+      <div class="image-wrapper">
+        <img src="FB_IMG_1769259474344.jpg" alt="Mercy">
+      </div>
+      <h4>Mercy</h4>
+      <p>Learning Coordinator</p>
     </div>
 
   </div>
 </section>
+
+<style>
+/* Updated Team Styles */
+.team-section {
+  max-width: 1100px;
+  margin: 70px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.team-section h2 {
+  color: var(--gold);
+  margin-bottom: 50px;
+  font-size: 32px;
+}
+
+/* Team Grid */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 35px;
+}
+
+/* Team Card */
+.team-card {
+  position: relative;
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* Image wrapper for overlay */
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Circular Images */
+.team-card img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--gold);
+  margin: 0 auto 15px;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.team-card:hover img {
+  transform: scale(1.05);
+}
+
+/* LinkedIn overlay button */
+.linkedin-overlay {
+  position: absolute;
+  bottom: -40px; /* hidden by default */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0a66c2;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  opacity: 0;
+  transition: bottom 0.3s, opacity 0.3s;
+}
+
+.team-card:hover .linkedin-overlay {
+  bottom: 10px;
+  opacity: 1;
+}
+
+/* Name and Role */
+.team-card h4 {
+  color: var(--gold);
+  margin: 10px 0 5px 0;
+  font-size: 18px;
+}
+
+.team-card p {
+  color: var(--soft);
+  margin: 0;
+  font-size: 15px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .team-card img {
+    width: 120px;
+    height: 120px;
+  }
+}
+</style>
+
 <!-- SUPPORT CARD -->
 <section class="support-card" style="max-width:900px;margin:50px auto 20px auto;padding:30px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-align:center;">
   <h3 style="color:var(--gold);font-size:24px;margin-bottom:15px;">Email Our Support Team Today!</h3>
