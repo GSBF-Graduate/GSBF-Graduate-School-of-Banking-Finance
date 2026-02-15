@@ -198,9 +198,10 @@ body{
     <div class="signatures">
 
       <div class="signature-block">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Signature_example.svg" 
-             class="signature-img" alt="Director Signature">
-        <p>Program Director</p>
+        <img class="signature-img" 
+src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAABkCAYAAAD..." 
+alt="Program Director Signature">
+ <p>Program Director</p>
         <div class="signature-line"></div>
       </div>
 
@@ -219,12 +220,14 @@ body{
 
   </div>
 </div>
+  <script>
 
-<script>
+document.addEventListener("DOMContentLoaded", function(){
 
 let applicants = JSON.parse(localStorage.getItem('gsbfApplicants') || '[]');
 
 if(applicants.length>0){
+
   let latest = applicants[applicants.length-1];
 
   document.getElementById('certName').textContent = latest.name;
@@ -232,19 +235,22 @@ if(applicants.length>0){
   document.getElementById('certCareer').textContent = latest.careerPath;
 
   let signatureIdentity =
-    `${latest.name} | GSBF ${latest.track.split(' — ')[0]} — ${latest.track.split(' — ')[1]} | ${latest.careerPath}`;
+    `${latest.name} | GSBF ${latest.track} | ${latest.careerPath}`;
 
   document.getElementById('signatureIdentity').textContent = signatureIdentity;
 
+  /* CERTIFICATE ID */
   let certID = "GSBF-" + new Date().getFullYear() + "-" + 
                Math.floor(100000 + Math.random() * 900000);
 
   document.getElementById('certID').textContent = "Certificate ID: " + certID;
 
+  /* DATE */
   let today = new Date();
   document.getElementById('certDate').textContent =
     today.toLocaleDateString();
 
+  /* QR GENERATION */
   let verificationData = `
   GSBF Certificate Verification
   Certificate ID: ${certID}
@@ -254,14 +260,17 @@ if(applicants.length>0){
   Date Issued: ${today.toLocaleDateString()}
   `;
 
-  new QRCode(document.getElementById("qrcode"), {
-    text: verificationData,
-    width: 100,
-    height: 100
-  });
+  if(typeof QRCode !== "undefined"){
+    new QRCode(document.getElementById("qrcode"), {
+      text: verificationData,
+      width: 100,
+      height: 100
+    });
+  }
+
 }
 
+});
 </script>
-
 </body>
 </html>
