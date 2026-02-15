@@ -30,16 +30,17 @@ if(applicants.length===0){
   dashboard.innerHTML="<p>No applications yet.</p>";
 }else{
   dashboard.innerHTML = applicants.map(a=>`
-    <div class="card">
-      <h3>${a.name} | GSBF ${a.track.split(' — ')[0]} — ${a.track.split(' — ')[1]} | ${a.careerPath}</h3>
-      <p>Finance Score: ${a.finance}/5</p>
-      <p>Analysis Score: ${a.analysis}/5</p>
-      <p>Motivation Score: ${a.motivation}/5</p>
-      <p>Total Score: ${a.total}/15 (${a.percentage}%)</p>
-      <p>Status: <strong style="color: var(--green)">${a.status}</strong></p>
-      <button onclick="copyLinkedIn('${a.name} | GSBF ${a.track.split(' — ')[0]} — ${a.track.split(' — ')[1]} | ${a.careerPath}')">Copy to LinkedIn</button>
-    </div>
-  `).join('');
+  <div class="card">
+    <h3>${a.name} — ${a.track} — ${a.careerPath}</h3>
+    <p>Finance Score: ${a.finance}/5</p>
+    <p>Analysis Score: ${a.analysis}/5</p>
+    <p>Motivation Score: ${a.motivation}/5</p>
+    <p>Total Score: ${a.total}/15 (${a.percentage}%)</p>
+    <p>Status: <strong style="color: var(--green)">${a.status}</strong></p>
+    <a href="certificate.html" class="btn" style="margin-top:10px;">View Certificate</a>
+    <a href="credential.html" class="btn" style="margin-top:10px;">View Credential</a>
+  </div>
+`).join('');
 }
 
 function copyLinkedIn(text){
