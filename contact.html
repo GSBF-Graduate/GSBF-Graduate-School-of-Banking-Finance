@@ -3,141 +3,194 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Contact Us | GSBF</title>
-
 <style>
 :root {
-  --gsbf-blue:#0b1f5e;
-  --gsbf-navy:#07143a;
-  --gsbf-gold:#f5c242;
-  --gsbf-gold-dark:#cfa02a;
+  --navy:#0b1f3a;
+  --royal:#123c73;
+  --gold:#f5c242;
+  --green:#1db954;
+  --soft:#cfd8e3;
   --white:#ffffff;
 }
 
 body {
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  background:var(--gsbf-blue);
-  color:white;
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg,var(--navy),var(--royal));
+  color: var(--white);
 }
 
 /* HEADER */
-
 header {
-  background:var(--gsbf-navy);
-  padding:15px 25px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-header h2 {
-  color:var(--gsbf-gold);
-  margin:0;
-}
-
-header a {
-  color:#dfe6ff;
-  text-decoration:none;
-  margin-left:15px;
+  background: var(--navy);
+  color: var(--gold);
+  padding: 20px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 /* HERO */
-
 .hero {
-  text-align:center;
-  padding:80px 20px;
-  background:linear-gradient(135deg,var(--gsbf-navy),var(--gsbf-blue));
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg,var(--navy),var(--royal));
+  color: var(--gold);
 }
 
-.hero h1 {
-  color:var(--gsbf-gold);
-  font-size:40px;
+.hero h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: var(--soft);
 }
 
 /* CONTACT SECTION */
-
-.section {
-  padding:70px 20px;
-  max-width:1100px;
-  margin:auto;
+.contact-section {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 0 20px;
 }
 
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:25px;
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
 }
 
-/* CARD */
-
-.card {
-  background:var(--gsbf-navy);
-  padding:30px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,0.08);
+.contact-info,
+.contact-form {
+  background: rgba(255,255,255,0.05);
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
 }
 
-.card h3 {
-  color:var(--gsbf-gold);
+.contact-info h3,
+.contact-form h3 {
+  color: var(--gold);
+  margin-bottom: 15px;
 }
 
-/* BUTTONS */
-
-.btn {
-  display:inline-block;
-  margin-top:15px;
-  padding:12px 24px;
-  background:linear-gradient(45deg,var(--gsbf-gold),var(--gsbf-gold-dark));
-  color:black;
-  font-weight:bold;
-  border-radius:6px;
-  text-decoration:none;
+.social-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 20px;
+  background: var(--green);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
 }
 
-/* FORM */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid var(--soft);
+  background: rgba(255,255,255,0.05);
+  color: var(--white);
+}
 
-input, textarea {
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border-radius:6px;
-  border:none;
-  font-size:14px;
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--soft);
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 12px;
+  background: var(--gold);
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 /* TEAM */
+.team-section {
+  max-width: 1100px;
+  margin: 70px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.team-section h2 {
+  color: var(--gold);
+  margin-bottom: 30px;
+  font-size: 32px;
+}
 
 .team-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:25px;
-  margin-top:30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
 }
 
-.team-member {
-  background:var(--gsbf-navy);
-  padding:20px;
-  border-radius:12px;
-  text-align:center;
+.team-card {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
 }
 
-.team-member img {
-  width:100px;
-  height:100px;
-  border-radius:50%;
-  object-fit:cover;
-  margin-bottom:10px;
+.team-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.team-card h4 {
+  color: var(--gold);
+  margin: 10px 0 5px 0;
+}
+
+.team-card p {
+  color: var(--soft);
+  margin: 0;
 }
 
 /* FOOTER */
-
 footer {
-  background:var(--gsbf-navy);
-  text-align:center;
-  padding:25px;
-  color:#bfc8ff;
+  text-align: center;
+  padding: 25px;
+  background: var(--navy);
+  color: var(--soft);
+  margin-top: 60px;
+  font-size: 14px;
+}
+
+/* WHATSAPP FLOATING BUTTON */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: var(--white);
+  padding: 14px 18px;
+  border-radius: 50px;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  font-weight: bold;
+  z-index: 1000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
@@ -145,128 +198,77 @@ footer {
 <body>
 
 <header>
-  <h2>GSBF</h2>
-  <div>
-    <a href="#">Home</a>
-    <a href="#">Programs</a>
-  </div>
+  GSBF — Graduate School of Banking & Finance
 </header>
 
 <section class="hero">
-  <h1>Contact GSBF</h1>
-  <p>We are here to support your professional journey.</p>
+  <h2>Contact GSBF</h2>
+  <p>We’re here to help you begin your professional transformation.</p>
 </section>
 
-<section class="section">
+<section class="contact-section">
+  <div class="contact-grid">
 
-<div class="grid">
+    <div class="contact-info">
+      <h3>Get In Touch</h3>
+      <p>
+        Have questions about GSBF programs or enrollment?
+        Reach out or connect on Facebook.
+      </p>
+      <a class="social-btn"
+         href="https://www.facebook.com/profile.php?id=61587936519955"
+         target="_blank">
+         Visit Our Facebook
+      </a>
+    </div>
 
-<!-- WhatsApp -->
+    <div class="contact-form">
+      <h3>Send Us a Message</h3>
+      <form>
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
 
-<div class="card">
-<h3>WhatsApp Support</h3>
-<p>Chat directly with our admissions and support team.</p>
-
-<a class="btn"
-href="https://wa.me/260958593261"
-target="_blank">
-💬 Message on WhatsApp
-</a>
-</div>
-
-<!-- Facebook -->
-
-<div class="card">
-<h3>Facebook Community</h3>
-<p>Follow GSBF updates and announcements.</p>
-
-<a class="btn"
-href="https://www.facebook.com/profile.php?id=61587936519955"
-target="_blank">
-📘 Visit Facebook
-</a>
-</div>
-
-<!-- Email Card -->
-
-<div class="card">
-<h3>Email Our Support Team Today!</h3>
-<p>Send us your questions and we will respond quickly.</p>
-
-<a class="btn"
-href="mailto:support@gsbf.org">
-✉️ EMAIL
-</a>
-</div>
-
-</div>
-
+  </div>
 </section>
 
-<!-- Contact Form -->
+<section class="team-section">
+  <h2>Meet The Team</h2>
+  <div class="team-grid">
 
-<section class="section">
+    <div class="team-card">
+      <img src="team1.jpg" alt="Lewis Mwaba">
+      <h4>Lewis Mwaba</h4>
+      <p>Founder & Lead Mentor</p>
+    </div>
 
-<h2 style="color:var(--gsbf-gold);text-align:center;">
-Send Us a Message
-</h2>
+    <div class="team-card">
+      <img src="team2.jpg" alt="Program Advisor">
+      <h4>Program Advisor</h4>
+      <p>Investment Strategy</p>
+    </div>
 
-<div class="card">
+    <div class="team-card">
+      <img src="team3.jpg" alt="Learning Coordinator">
+      <h4>Learning Coordinator</h4>
+      <p>Training Support</p>
+    </div>
 
-<form>
-
-<input type="text" placeholder="Full Name" required>
-<input type="email" placeholder="Email Address" required>
-
-<textarea rows="5"
-placeholder="Your message..."
-required></textarea>
-
-<button class="btn" type="submit">
-Send Message
-</button>
-
-</form>
-
-</div>
-
-</section>
-
-<!-- Meet the Team -->
-
-<section class="section">
-
-<h2 style="color:var(--gsbf-gold);text-align:center;">
-Meet the Team
-</h2>
-
-<div class="team-grid">
-
-<div class="team-member">
-<img src="https://via.placeholder.com/100">
-<h4>Founder / Director</h4>
-<p>GSBF Leadership</p>
-</div>
-
-<div class="team-member">
-<img src="https://via.placeholder.com/100">
-<h4>Admissions Lead</h4>
-<p>Student Support</p>
-</div>
-
-<div class="team-member">
-<img src="https://via.placeholder.com/100">
-<h4>Program Advisor</h4>
-<p>Academic Guidance</p>
-</div>
-
-</div>
-
+  </div>
 </section>
 
 <footer>
-© 2026 Graduate School of Banking & Finance
+  © 2026 GSBF — Graduate School of Banking & Finance
 </footer>
+
+<a class="whatsapp-btn"
+   href="https://wa.me/260958593261"
+   target="_blank">
+   WhatsApp Us
+</a>
 
 </body>
 </html>
