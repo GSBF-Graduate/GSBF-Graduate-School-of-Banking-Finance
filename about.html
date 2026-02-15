@@ -10,6 +10,9 @@
   --gsbf-blue-dark: #081c5a;
   --gsbf-blue: #0b2c8a;
   --gsbf-gold: #f4c430;
+  --text-dark: #111;
+  --text-muted: #555;
+  --bg-light: #f5f7fb;
 }
 
 /* GLOBAL */
@@ -17,8 +20,8 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #f5f7fb;
-  color: #111;
+  background: var(--bg-light);
+  color: var(--text-dark);
 }
 
 /* HERO HEADER */
@@ -66,7 +69,75 @@ body {
   margin-top: 15px;
 }
 
-/* FOOTER */
+/* TEAM SECTION */
+
+.team-section {
+  max-width: 1100px;
+  margin: 70px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.team-section h2 {
+  color: var(--gsbf-blue-dark);
+  margin-bottom: 50px;
+  font-size: 32px;
+  position: relative;
+}
+
+/* Team Grid */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+}
+
+/* Team Card */
+.team-card {
+  position: relative;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* Circular Image */
+.team-card img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--gsbf-gold);
+  margin: 0 auto 15px;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.team-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Name and Role */
+.team-card h4 {
+  color: var(--gsbf-blue-dark);
+  margin: 10px 0 5px 0;
+  font-size: 18px;
+}
+
+.team-card p {
+  color: var(--text-muted);
+  margin: 0;
+  font-size: 15px;
+}
+
+/* Footer */
 
 .legal-footer {
   background: linear-gradient(135deg, var(--gsbf-blue-dark), var(--gsbf-blue));
@@ -88,49 +159,7 @@ body {
   .hero h1 { font-size: 26px; }
   .section-card { padding: 25px; }
   .section-card p { font-size: 15px; }
-}
-  /* TEAM */
-.team-section {
-  max-width: 1100px;
-  margin: 70px auto;
-  padding: 0 20px;
-  text-align: center;
-}
-
-.team-section h2 {
-  color: var(--gold);
-  margin-bottom: 30px;
-  font-size: 32px;
-}
-
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
-}
-
-.team-card {
-  background: rgba(255,255,255,0.05);
-  padding: 20px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.team-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.team-card h4 {
-  color: var(--gold);
-  margin: 10px 0 5px 0;
-}
-
-.team-card p {
-  color: var(--soft);
-  margin: 0;
+  .team-card img { width: 120px; height: 120px; }
 }
 </style>
 </head>
@@ -148,38 +177,35 @@ body {
 <div class="container">
 
   <div class="section-card">
-
     <h2>WHO WE ARE</h2>
-
     <p>
-      GSBF – Graduate School of Banking & Finance is founded by Mwaba Lewis under
+      GSBF – Graduate School of Banking & Finance is founded by Lewis Mwaba under
       <strong>M. Lewis Consulting & Research</strong> and is operated by a group of
       investment practitioners and mentors drawn from the global workforce.
     </p>
-
     <p>
       We are a learning and career infrastructure platform built to bridge the gap
       between academic finance education and real-world investment practice.
       Our mission is to equip graduates and professionals with practical,
       industry-relevant skills required to thrive in modern financial markets.
     </p>
-
     <p>
       Through structured programs, mentorship, and hands-on training, GSBF prepares
       participants for careers in investment banking, private equity, venture capital,
       wealth management, and finance-driven entrepreneurship.
     </p>
-
     <p>
       Our ecosystem combines global expertise, professional mentorship,
       and practical learning frameworks to create a new standard for
       finance education and career development.
     </p>
-
   </div>
 
 </div>
-<section>
+
+<!-- TEAM -->
+
+<section class="team-section">
   <h2>Meet The Team</h2>
   <div class="team-grid">
 
@@ -190,18 +216,20 @@ body {
     </div>
 
     <div class="team-card">
-      <h4>Program Advisor</h4>
-      <p>Daniel</p>
+      <img src="placeholder.jpg" alt="Daniel">
+      <h4>Daniel</h4>
+      <p>Program Advisor</p>
     </div>
 
     <div class="team-card">
       <img src="FB_IMG_1769259474344.jpg" alt="Mercy">
-      <h4>Learning Coordinator</h4>
-      <p>Mercy</p>
+      <h4>Mercy</h4>
+      <p>Learning Coordinator</p>
     </div>
 
   </div>
 </section>
+
 <!-- FOOTER -->
 
 <footer class="legal-footer">
